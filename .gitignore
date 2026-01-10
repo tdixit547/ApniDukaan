@@ -1,0 +1,43 @@
+# Compiled class files
+*.class
+target/
+
+# Log files
+*.log
+
+# Maven
+.mvn/wrapper/maven-wrapper.jar
+
+# IntelliJ IDEA
+.idea/
+*.iml
+*.iws
+*.ipr
+
+# Eclipse
+.project
+.classpath
+.settings/
+
+# NetBeans
+nbproject/
+
+# VS Code
+.vscode/
+
+# OS
+.DS_Store
+Thumbs.db
+
+# Database
+*.db
+
+# Temporary files
+*.tmp
+*.bak
+*.swp
+*~
+
+# Application specific
+application-local.properties
+
