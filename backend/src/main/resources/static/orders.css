@@ -1,0 +1,205 @@
+/* ================= GLOBAL ================= */
+
+body {
+    margin: 0;
+    font-family: system-ui, sans-serif;
+    background: linear-gradient(180deg, #050712, #0a1228 60%, #0f1b36);
+    color: #fff;
+    min-height: 100vh;
+  }
+  
+  .glass {
+    background: rgba(255,255,255,0.06);
+    border: 1px solid rgba(255,255,255,0.12);
+    backdrop-filter: blur(18px);
+    border-radius: 16px;
+    box-shadow: 0 12px 40px rgba(0,0,0,0.45);
+  }
+  
+  .divider-glow {
+    width: 100%;
+    height: 6px;
+    margin: 20px 0;
+    border-radius: 999px;
+    background: linear-gradient(90deg,
+        rgba(75,163,255,0.2),
+        rgba(97,228,248,0.35),
+        rgba(75,163,255,0.2)
+    );
+    box-shadow: 0 0 20px rgba(97,228,248,0.3);
+  }
+  
+  /* ================= NAVBAR ================= */
+  
+  .navbar {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 14px 24px;
+    margin: 20px auto 0;
+    width: 94%;
+  }
+  
+  .nav-left {
+    display: flex;
+    gap: 22px;
+    align-items: center;
+  }
+  
+  .logo {
+    font-size: 20px;
+    font-weight: 700;
+  }
+  
+  .nav-link {
+    padding: 6px 14px;
+    border-radius: 999px;
+    color: #d3ddf2;
+    cursor: pointer;
+    font-size: 14px;
+    transition: 0.2s;
+  }
+  
+  .nav-link:hover {
+    background: rgba(75,163,255,0.22);
+    color: #fff;
+  }
+  
+  .nav-active {
+    background: rgba(75,163,255,0.25);
+    color: #fff;
+    border: 1px solid rgba(97,228,248,0.45);
+  }
+  
+  .cart-button {
+    background: linear-gradient(90deg,#3A7BFF,#61E4F8);
+    padding: 8px 16px;
+    border-radius: 999px;
+    cursor: pointer;
+    color: #08111f;
+    font-weight: 700;
+  }
+  
+  /* ================= TITLE ================= */
+  
+  .orders-title {
+    font-size: 26px;
+    margin: 10px 0 22px 3%;
+    font-weight: 700;
+  }
+  
+  /* ================= ORDER CONTAINER ================= */
+  
+  .orders-container {
+    width: 94%;
+    margin: 0 auto;
+    display: flex;
+    flex-direction: column;
+    gap: 26px;
+  }
+  
+  /* ================= ORDER CARD ================= */
+  
+  .order-card {
+    padding: 22px;
+    border-radius: 16px;
+  }
+  
+  .order-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+  }
+  
+  .order-id {
+    font-size: 18px;
+    font-weight: 600;
+  }
+  
+  .order-date {
+    font-size: 13px;
+    color: #b7c3da;
+  }
+  
+  .order-status {
+    padding: 6px 14px;
+    border-radius: 999px;
+    font-size: 13px;
+    font-weight: 600;
+  }
+  
+  .completed {
+    background: rgba(0,255,120,0.20);
+    color: #3aff9a;
+  }
+  
+  .pending {
+    background: rgba(255,210,0,0.25);
+    color: #ffea7b;
+  }
+  
+  /* ================= ITEMS ================= */
+  
+  .order-items {
+    margin-top: 18px;
+    display: flex;
+    flex-direction: column;
+    gap: 14px;
+  }
+  
+  .order-item {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+  }
+  
+  .item-image {
+    width: 56px;
+    height: 56px;
+    border-radius: 12px;
+    background: rgba(255,255,255,0.07);
+    border: 1px solid rgba(255,255,255,0.12);
+  }
+  
+  .item-info {
+    flex: 1;
+    margin-left: 16px;
+  }
+  
+  .item-name {
+    font-size: 15px;
+    font-weight: 600;
+  }
+  
+  .item-details {
+    font-size: 13px;
+    color: #b7c3da;
+  }
+  
+  .item-price {
+    font-size: 15px;
+    font-weight: 600;
+  }
+  
+  /* ================= ORDER SUMMARY ================= */
+  
+  .order-summary {
+    margin-top: 16px;
+    background: rgba(255,255,255,0.04);
+    border-radius: 12px;
+    padding: 14px;
+  }
+  
+  .summary-row,
+  .summary-total {
+    display: flex;
+    justify-content: space-between;
+    margin-bottom: 6px;
+  }
+  
+  .summary-total {
+    font-size: 18px;
+    font-weight: 700;
+    margin-top: 8px;
+  }
+  

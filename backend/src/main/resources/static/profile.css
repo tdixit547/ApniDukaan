@@ -1,0 +1,254 @@
+/* PREMIUM PROFILE THEME */
+body {
+  margin: 0;
+  font-family: 'Inter', -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif;
+  color: #e0e6ed;
+  background: radial-gradient(circle at top left, #1a233b 0%, #050712 100%);
+  min-height: 100vh;
+}
+
+/* Glass Effect Utility */
+.glass {
+  background: rgba(255, 255, 255, 0.04);
+  backdrop-filter: blur(24px);
+  -webkit-backdrop-filter: blur(24px);
+  border: 1px solid rgba(255, 255, 255, 0.08);
+  border-top: 1px solid rgba(255, 255, 255, 0.12);
+  border-radius: 24px;
+  box-shadow: 0 8px 32px rgba(0, 0, 0, 0.4);
+  transition: all 0.3s ease;
+}
+
+.glass:hover {
+  transform: translateY(-4px);
+  background: rgba(255, 255, 255, 0.06);
+  border-color: rgba(255, 255, 255, 0.18);
+  box-shadow: 0 16px 48px rgba(0, 0, 0, 0.5);
+}
+
+/* Layout */
+.profile-shell {
+  max-width: 1400px;
+  margin: 0 auto;
+  padding: 20px;
+}
+
+/* Divider */
+.divider-glow {
+  height: 1px;
+  width: 100%;
+  background: linear-gradient(90deg, transparent, rgba(97, 228, 248, 0.5), transparent);
+  margin: 30px 0;
+  opacity: 0.6;
+}
+
+/* Page Title */
+.profile-title {
+  font-size: 32px;
+  font-weight: 800;
+  letter-spacing: -0.02em;
+  margin-bottom: 30px;
+  background: linear-gradient(90deg, #fff, #94a3b8);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+}
+
+/* Grid System */
+.profile-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(350px, 1fr));
+  gap: 24px;
+}
+
+.profile-card {
+  padding: 30px;
+  display: flex;
+  flex-direction: column;
+}
+
+/* Section Title */
+.section-title {
+  font-size: 14px;
+  text-transform: uppercase;
+  letter-spacing: 0.08em;
+  font-weight: 700;
+  color: rgba(255, 255, 255, 0.5);
+  margin-bottom: 20px;
+}
+
+/* User Header Card */
+.profile-header {
+  display: flex;
+  align-items: center;
+  gap: 24px;
+  margin-bottom: 24px;
+}
+
+.avatar {
+  width: 80px;
+  height: 80px;
+  border-radius: 50%;
+  background: linear-gradient(135deg, #2a2d3e, #1f2233);
+  border: 2px solid rgba(255, 255, 255, 0.1);
+  box-shadow: 0 8px 16px rgba(0, 0, 0, 0.3);
+}
+
+.profile-name {
+  font-size: 24px;
+  font-weight: 700;
+  color: #fff;
+  margin-bottom: 4px;
+}
+
+.profile-email,
+.profile-phone {
+  font-size: 14px;
+  color: rgba(255, 255, 255, 0.6);
+  margin-top: 4px;
+}
+
+/* Addresses */
+.address-block {
+  padding: 16px;
+  background: rgba(0, 0, 0, 0.2);
+  border-radius: 12px;
+  margin-bottom: 16px;
+  border: 1px solid rgba(255, 255, 255, 0.05);
+}
+
+.address-title {
+  font-size: 14px;
+  font-weight: 600;
+  color: #61E4F8;
+  margin-bottom: 8px;
+}
+
+.address-text {
+  font-size: 13px;
+  line-height: 1.6;
+  color: rgba(255, 255, 255, 0.7);
+}
+
+/* Recent Orders */
+.mini-order {
+  padding: 16px;
+  background: rgba(0, 0, 0, 0.2);
+  border-radius: 12px;
+  margin-bottom: 12px;
+  border: 1px solid rgba(255, 255, 255, 0.05);
+  transition: background 0.2s;
+}
+
+.mini-order:hover {
+  background: rgba(255, 255, 255, 0.08);
+}
+
+.mini-order-id {
+  font-family: 'SF Mono', 'Roboto Mono', monospace;
+}
+
+.completed {
+  background: rgba(46, 213, 115, 0.15);
+  color: #2ed573;
+  border: 1px solid rgba(46, 213, 115, 0.3);
+}
+
+.pending {
+  background: rgba(255, 177, 66, 0.15);
+  color: #ffb142;
+  border: 1px solid rgba(255, 177, 66, 0.3);
+}
+
+.processing {
+  background: rgba(55, 66, 250, 0.15);
+  color: #3742fa;
+  border: 1px solid rgba(55, 66, 250, 0.3);
+}
+
+.cancelled {
+  background: rgba(255, 71, 87, 0.15);
+  color: #ff4757;
+  border: 1px solid rgba(255, 71, 87, 0.3);
+}
+
+/* Settings */
+.settings-row {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 16px 0;
+  border-bottom: 1px solid rgba(255, 255, 255, 0.05);
+  font-size: 14px;
+}
+
+.settings-row:last-child {
+  border-bottom: none;
+}
+
+.danger-zone div {
+  color: #ff6b6b;
+  font-weight: 500;
+}
+
+/* Buttons */
+.btn-edit,
+.btn-small {
+  width: 100%;
+  padding: 12px;
+  border-radius: 12px;
+  border: none;
+  font-weight: 600;
+  font-size: 14px;
+  cursor: pointer;
+  background: linear-gradient(135deg, #3A7BFF 0%, #2355cc 100%);
+  color: white;
+  margin-top: auto;
+  transition: all 0.2s;
+  box-shadow: 0 4px 12px rgba(58, 123, 255, 0.3);
+}
+
+.btn-edit:hover,
+.btn-small:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 8px 20px rgba(58, 123, 255, 0.4);
+}
+
+.btn-ghost {
+  padding: 8px 16px;
+  background: transparent;
+  border: 1px solid rgba(255, 255, 255, 0.2);
+  color: white;
+  border-radius: 8px;
+  cursor: pointer;
+  font-size: 12px;
+  transition: 0.2s;
+}
+
+.btn-ghost:hover {
+  background: rgba(255, 255, 255, 0.1);
+  border-color: white;
+}
+
+.btn-danger {
+  padding: 8px 16px;
+  background: rgba(255, 71, 87, 0.1);
+  border: 1px solid rgba(255, 71, 87, 0.3);
+  color: #ff4757;
+  border-radius: 8px;
+  cursor: pointer;
+  font-size: 12px;
+  transition: 0.2s;
+}
+
+.btn-danger:hover {
+  background: rgba(255, 71, 87, 0.2);
+  border-color: #ff4757;
+}
+
+/* Navbar (Keep strict alignment with Profile layout) */
+.navbar {
+  /* Using global navbar from style.css since we linked it, keeping this minimal */
+  margin-bottom: 20px !important;
+}
+
+/* Modal form adjustments matches style.css */

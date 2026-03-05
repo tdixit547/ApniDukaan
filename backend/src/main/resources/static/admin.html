@@ -1,0 +1,194 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <title>Admin Panel - ApniDukaan</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <link rel="stylesheet" href="style.css">
+  <link rel="stylesheet" href="admin.css">
+</head>
+
+<body>
+  <div class="page">
+    <div class="customer-portal">
+      <!-- Navbar -->
+      <div class="navbar">
+        <div class="nav-left">
+          <div class="logo">🛠️ Admin Panel</div>
+          <div class="nav-links">
+            <div class="nav-link" onclick="window.location.href='index.html'">← Back to Shop</div>
+          </div>
+        </div>
+        <div class="nav-right">
+          <span class="admin-user-info" id="adminUserInfo"></span>
+          <button class="btn-logout" onclick="logout()">Logout</button>
+        </div>
+      </div>
+
+      <!-- Admin Content -->
+      <div class="admin-container">
+        <!-- Sidebar -->
+        <div class="admin-sidebar">
+          <div class="sidebar-item active" data-section="dashboard" onclick="showSection('dashboard')">
+            📊 Dashboard
+          </div>
+          <div class="sidebar-item" data-section="products" onclick="showSection('products')">
+            📦 Products
+          </div>
+          <div class="sidebar-item" data-section="categories" onclick="showSection('categories')">
+            🏷️ Categories
+          </div>
+          <div class="sidebar-item" data-section="orders" onclick="showSection('orders')">
+            🛒 Orders
+          </div>
+          <div class="sidebar-item" data-section="users" onclick="showSection('users')">
+            👥 Users
+          </div>
+        </div>
+
+        <!-- Main Content -->
+        <div class="admin-main">
+          <!-- Dashboard Section -->
+          <div id="dashboard-section" class="admin-section active">
+            <h2>Dashboard</h2>
+            <div class="stats-grid">
+              <div class="stat-card">
+                <div class="stat-icon">📦</div>
+                <div class="stat-value" id="totalProducts">0</div>
+                <div class="stat-label">Total Products</div>
+              </div>
+              <div class="stat-card">
+                <div class="stat-icon">🏷️</div>
+                <div class="stat-value" id="totalCategories">0</div>
+                <div class="stat-label">Categories</div>
+              </div>
+              <div class="stat-card">
+                <div class="stat-icon">🛒</div>
+                <div class="stat-value" id="totalOrders">0</div>
+                <div class="stat-label">Orders</div>
+              </div>
+              <div class="stat-card">
+                <div class="stat-icon">👥</div>
+                <div class="stat-value" id="totalUsers">0</div>
+                <div class="stat-label">Users</div>
+              </div>
+            </div>
+          </div>
+
+          <!-- Products Section -->
+          <div id="products-section" class="admin-section">
+            <div class="section-header">
+              <h2>Products Management</h2>
+              <button class="btn-primary" onclick="showProductModal()">+ Add Product</button>
+            </div>
+            <div class="admin-table-container">
+              <table class="admin-table">
+                <thead>
+                  <tr>
+                    <th>ID</th>
+                    <th>Name</th>
+                    <th>Category</th>
+                    <th>Price</th>
+                    <th>Stock</th>
+                    <th>Actions</th>
+                  </tr>
+                </thead>
+                <tbody id="productsTableBody">
+                  <tr>
+                    <td colspan="6">Loading...</td>
+                  </tr>
+                </tbody>
+              </table>
+            </div>
+          </div>
+
+          <!-- Categories Section -->
+          <div id="categories-section" class="admin-section">
+            <div class="section-header">
+              <h2>Categories Management</h2>
+              <button class="btn-primary" onclick="showCategoryModal()">+ Add Category</button>
+            </div>
+            <div class="admin-table-container">
+              <table class="admin-table">
+                <thead>
+                  <tr>
+                    <th>ID</th>
+                    <th>Name</th>
+                    <th>Slug</th>
+                    <th>Description</th>
+                    <th>Actions</th>
+                  </tr>
+                </thead>
+                <tbody id="categoriesTableBody">
+                  <tr>
+                    <td colspan="5">Loading...</td>
+                  </tr>
+                </tbody>
+              </table>
+            </div>
+          </div>
+
+          <!-- Orders Section -->
+          <div id="orders-section" class="admin-section">
+            <div class="section-header">
+              <h2>Orders Management</h2>
+            </div>
+            <div class="admin-table-container">
+              <table class="admin-table">
+                <thead>
+                  <tr>
+                    <th>Order #</th>
+                    <th>Customer</th>
+                    <th>Total</th>
+                    <th>Status</th>
+                    <th>Date</th>
+                    <th>Actions</th>
+                  </tr>
+                </thead>
+                <tbody id="ordersTableBody">
+                  <tr>
+                    <td colspan="6">Loading...</td>
+                  </tr>
+                </tbody>
+              </table>
+            </div>
+          </div>
+
+          <!-- Users Section -->
+          <div id="users-section" class="admin-section">
+            <div class="section-header">
+              <h2>Users</h2>
+            </div>
+            <div class="admin-table-container">
+              <table class="admin-table">
+                <thead>
+                  <tr>
+                    <th>ID</th>
+                    <th>Name</th>
+                    <th>Email</th>
+                    <th>Phone</th>
+                    <th>Role</th>
+                    <th>Actions</th>
+                  </tr>
+                </thead>
+                <tbody id="usersTableBody">
+                  <tr>
+                    <td colspan="5">Loading...</td>
+                  </tr>
+                </tbody>
+              </table>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- Notification container -->
+  <div id="notification" class="notification"></div>
+
+  <script src="admin.js"></script>
+</body>
+
+</html>

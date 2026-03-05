@@ -1,0 +1,177 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Your Orders – ApniDukaan</title>
+  <link rel="stylesheet" href="style.css">
+  <style>
+    .orders-shell {
+      min-height: 100vh;
+      padding: 24px;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+    }
+    .orders-shell .navbar {
+      width: 100%;
+      max-width: 1200px;
+      margin-bottom: 0;
+    }
+    .orders-title {
+      width: 100%;
+      max-width: 1200px;
+      font-size: 28px;
+      font-weight: 800;
+      color: #fff;
+      margin: 24px 0 16px;
+      letter-spacing: -0.5px;
+    }
+    .orders-container {
+      width: 100%;
+      max-width: 1200px;
+      display: flex;
+      flex-direction: column;
+      gap: 16px;
+    }
+    .order-card {
+      background: rgba(255,255,255,0.06);
+      border: 1px solid rgba(255,255,255,0.10);
+      backdrop-filter: blur(16px);
+      border-radius: 18px;
+      padding: 24px;
+    }
+    .order-header {
+      display: flex;
+      justify-content: space-between;
+      align-items: flex-start;
+      margin-bottom: 20px;
+    }
+    .order-id {
+      font-size: 16px;
+      font-weight: 700;
+      color: #fff;
+      font-family: monospace;
+    }
+    .order-date {
+      font-size: 13px;
+      color: rgba(255,255,255,0.5);
+      margin-top: 4px;
+    }
+    .order-status {
+      padding: 5px 14px;
+      border-radius: 999px;
+      font-size: 12px;
+      font-weight: 700;
+      text-transform: uppercase;
+      letter-spacing: 0.04em;
+    }
+    .order-status.completed  { background: rgba(46,204,113,0.2);  color: #2ecc71; border: 1px solid rgba(46,204,113,0.3); }
+    .order-status.pending    { background: rgba(255,193,7,0.15);   color: #ffc107; border: 1px solid rgba(255,193,7,0.3); }
+    .order-status.processing { background: rgba(58,123,255,0.2);   color: #5b9bff; border: 1px solid rgba(58,123,255,0.3); }
+    .order-status.cancelled  { background: rgba(255,107,107,0.2);  color: #ff6b6b; border: 1px solid rgba(255,107,107,0.3); }
+    .order-items {
+      display: flex;
+      flex-direction: column;
+      gap: 12px;
+      margin-bottom: 20px;
+      padding-bottom: 20px;
+      border-bottom: 1px solid rgba(255,255,255,0.08);
+    }
+    .order-item {
+      display: flex;
+      align-items: center;
+      gap: 14px;
+    }
+    .item-image {
+      width: 44px;
+      height: 44px;
+      border-radius: 10px;
+      background: rgba(58,123,255,0.2);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 14px;
+      font-weight: 700;
+      color: #5b9bff;
+      flex-shrink: 0;
+      overflow: hidden;
+    }
+    .item-image img { width: 100%; height: 100%; object-fit: cover; }
+    .item-info { flex: 1; }
+    .item-name  { font-size: 14px; font-weight: 600; color: #fff; }
+    .item-details { font-size: 12px; color: rgba(255,255,255,0.5); margin-top: 2px; }
+    .item-price { font-size: 14px; font-weight: 700; color: #fff; }
+    .order-summary {
+      display: flex;
+      flex-direction: column;
+      gap: 6px;
+    }
+    .summary-row {
+      display: flex;
+      justify-content: space-between;
+      font-size: 13px;
+      color: rgba(255,255,255,0.6);
+    }
+    .summary-total {
+      display: flex;
+      justify-content: space-between;
+      font-size: 15px;
+      font-weight: 700;
+      color: #fff;
+      margin-top: 4px;
+      padding-top: 10px;
+      border-top: 1px solid rgba(255,255,255,0.10);
+    }
+    .order-actions {
+      margin-top: 16px;
+      display: flex;
+      gap: 10px;
+    }
+    .divider-glow {
+      width: 100%;
+      max-width: 1200px;
+      height: 1px;
+      background: linear-gradient(90deg, transparent, rgba(97,228,248,0.3), transparent);
+      margin: 16px 0;
+    }
+  </style>
+</head>
+
+<body>
+  <div class="orders-shell">
+
+    <!-- NAVBAR -->
+    <div class="navbar" style="max-width:1200px; width:100%;">
+      <div class="nav-left">
+        <div class="logo">ApniDukaan</div>
+        <div class="nav-links">
+          <div class="nav-link" onclick="window.location.href='index.html'">Shop</div>
+          <div class="nav-link nav-link-active">Orders</div>
+          <div class="nav-link" onclick="window.location.href='profile.html'">Profile</div>
+        </div>
+      </div>
+      <div class="nav-right" id="navRight">
+        <!-- User info injected by JS -->
+      </div>
+    </div>
+
+    <div class="divider-glow"></div>
+
+    <div class="orders-title">Your Orders</div>
+
+    <!-- Real orders rendered here by orders.js -->
+    <div class="orders-container">
+      <div style="text-align:center; padding: 60px 20px; color: rgba(255,255,255,0.4);">
+        <div style="font-size:48px; margin-bottom:16px;">📦</div>
+        <div style="font-size:16px;">Loading orders...</div>
+      </div>
+    </div>
+
+  </div>
+
+  <script src="orders.js"></script>
+</body>
+
+</html>

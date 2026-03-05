@@ -1,0 +1,420 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8" />
+    <title>About - ApniDukaan</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <link rel="stylesheet" href="style.css" />
+    <style>
+        .about-container {
+            max-width: 900px;
+            margin: 0 auto;
+            padding: 40px 20px;
+        }
+
+        .about-header {
+            text-align: center;
+            margin-bottom: 50px;
+        }
+
+        .about-logo {
+            font-size: 42px;
+            font-weight: 800;
+            background: linear-gradient(90deg, #3A7BFF, #61E4F8);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+            margin-bottom: 16px;
+        }
+
+        .about-tagline {
+            font-size: 18px;
+            color: #c6d4e8;
+            max-width: 500px;
+            margin: 0 auto;
+        }
+
+        .about-section {
+            background: rgba(255, 255, 255, 0.06);
+            border: 1px solid rgba(255, 255, 255, 0.12);
+            backdrop-filter: blur(16px);
+            border-radius: 22px;
+            padding: 30px;
+            margin-bottom: 30px;
+        }
+
+        .about-section h2 {
+            font-size: 24px;
+            margin-bottom: 20px;
+            color: #ffffff;
+            display: flex;
+            align-items: center;
+            gap: 12px;
+        }
+
+        .about-section p {
+            font-size: 15px;
+            line-height: 1.7;
+            color: #c6d4e8;
+            margin-bottom: 16px;
+        }
+
+        .features-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+            gap: 16px;
+            margin-top: 20px;
+        }
+
+        .feature-card {
+            background: rgba(75, 163, 255, 0.1);
+            border: 1px solid rgba(75, 163, 255, 0.2);
+            border-radius: 14px;
+            padding: 20px;
+            text-align: center;
+        }
+
+        .feature-icon {
+            font-size: 32px;
+            margin-bottom: 12px;
+        }
+
+        .feature-title {
+            font-size: 14px;
+            font-weight: 600;
+            color: #ffffff;
+            margin-bottom: 6px;
+        }
+
+        .feature-desc {
+            font-size: 12px;
+            color: #a0b4d0;
+        }
+
+        .team-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 20px;
+            margin-top: 20px;
+        }
+
+        .team-card {
+            background: linear-gradient(135deg, rgba(75, 163, 255, 0.15), rgba(97, 228, 248, 0.08));
+            border: 1px solid rgba(255, 255, 255, 0.12);
+            border-radius: 16px;
+            padding: 24px;
+            text-align: center;
+            transition: transform 0.3s ease, box-shadow 0.3s ease;
+        }
+
+        .team-card:hover {
+            transform: translateY(-4px);
+            box-shadow: 0 12px 30px rgba(58, 123, 255, 0.2);
+        }
+
+        .team-avatar {
+            width: 70px;
+            height: 70px;
+            background: linear-gradient(135deg, #3A7BFF, #61E4F8);
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            margin: 0 auto 16px;
+            font-size: 28px;
+            font-weight: 700;
+            color: #0A0F1F;
+        }
+
+        .team-name {
+            font-size: 18px;
+            font-weight: 600;
+            color: #ffffff;
+            margin-bottom: 6px;
+        }
+
+        .team-roll {
+            font-size: 14px;
+            color: #61E4F8;
+            font-weight: 500;
+            padding: 4px 12px;
+            background: rgba(97, 228, 248, 0.15);
+            border-radius: 999px;
+            display: inline-block;
+        }
+
+        .tech-stack {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 10px;
+            margin-top: 16px;
+        }
+
+        .tech-badge {
+            background: rgba(255, 255, 255, 0.08);
+            border: 1px solid rgba(255, 255, 255, 0.15);
+            padding: 8px 16px;
+            border-radius: 999px;
+            font-size: 13px;
+            color: #e3e9f5;
+        }
+
+        .back-btn {
+            display: inline-flex;
+            align-items: center;
+            gap: 8px;
+            padding: 12px 24px;
+            background: linear-gradient(90deg, #3A7BFF, #61E4F8);
+            color: #0A0F1F;
+            border: none;
+            border-radius: 999px;
+            font-size: 14px;
+            font-weight: 600;
+            cursor: pointer;
+            text-decoration: none;
+            transition: 0.25s ease;
+            margin-top: 20px;
+        }
+
+        .back-btn:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 0 28px rgba(97, 228, 248, 0.5);
+        }
+
+        .help-section {
+            background: linear-gradient(135deg, rgba(46, 204, 113, 0.15), rgba(39, 174, 96, 0.08));
+            border: 1px solid rgba(46, 204, 113, 0.2);
+        }
+
+        .help-list {
+            list-style: none;
+            padding: 0;
+        }
+
+        .help-list li {
+            padding: 12px 0;
+            border-bottom: 1px solid rgba(255, 255, 255, 0.08);
+            display: flex;
+            align-items: flex-start;
+            gap: 12px;
+        }
+
+        .help-list li:last-child {
+            border-bottom: none;
+        }
+
+        .help-list .help-icon {
+            font-size: 20px;
+            min-width: 30px;
+        }
+
+        .help-list .help-text strong {
+            color: #ffffff;
+            display: block;
+            margin-bottom: 4px;
+        }
+
+        .help-list .help-text span {
+            color: #a0b4d0;
+            font-size: 14px;
+        }
+    </style>
+</head>
+
+<body>
+    <div class="page">
+        <div class="customer-portal">
+            <!-- Navigation -->
+            <div class="navbar">
+                <div class="nav-left">
+                    <div class="logo">ApniDukaan</div>
+                    <div class="nav-links">
+                        <a href="index.html" class="nav-link">Shop</a>
+                        <a href="about.html" class="nav-link nav-link-active">About</a>
+                    </div>
+                </div>
+                <div class="nav-right">
+                    <a href="index.html" class="back-btn">← Back to Shop</a>
+                </div>
+            </div>
+
+            <div class="about-container">
+                <!-- Header -->
+                <div class="about-header">
+                    <div class="about-logo">ApniDukaan</div>
+                    <p class="about-tagline">Your one-stop destination for premium electronics, fashion, and more -
+                        delivered right to your doorstep.</p>
+                </div>
+
+                <!-- About the Project -->
+                <div class="about-section">
+                    <h2>📦 About the Project</h2>
+                    <p>
+                        <strong>ApniDukaan</strong> is a full-stack e-commerce web application built as a college
+                        project.
+                        It demonstrates the implementation of a modern online shopping platform with features like
+                        user authentication, product browsing, shopping cart, order management, and reviews.
+                    </p>
+                    <p>
+                        The platform allows users to browse products across multiple categories, add items to cart,
+                        place orders with different payment methods, and leave reviews for purchased products.
+                    </p>
+
+                    <div class="features-grid">
+                        <div class="feature-card">
+                            <div class="feature-icon">🔐</div>
+                            <div class="feature-title">Secure Auth</div>
+                            <div class="feature-desc">JWT-based authentication</div>
+                        </div>
+                        <div class="feature-card">
+                            <div class="feature-icon">🛒</div>
+                            <div class="feature-title">Shopping Cart</div>
+                            <div class="feature-desc">Real-time cart management</div>
+                        </div>
+                        <div class="feature-card">
+                            <div class="feature-icon">📦</div>
+                            <div class="feature-title">Order Tracking</div>
+                            <div class="feature-desc">Track your orders</div>
+                        </div>
+                        <div class="feature-card">
+                            <div class="feature-icon">⭐</div>
+                            <div class="feature-title">Reviews</div>
+                            <div class="feature-desc">Rate and review products</div>
+                        </div>
+                        <div class="feature-card">
+                            <div class="feature-icon">👤</div>
+                            <div class="feature-title">User Profiles</div>
+                            <div class="feature-desc">Manage your account</div>
+                        </div>
+                        <div class="feature-card">
+                            <div class="feature-icon">🛠️</div>
+                            <div class="feature-title">Admin Panel</div>
+                            <div class="feature-desc">Manage products & users</div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Technology Stack -->
+                <div class="about-section">
+                    <h2>🔧 Technology Stack</h2>
+                    <p>This project is built using modern technologies and best practices:</p>
+                    <div class="tech-stack">
+                        <span class="tech-badge">☕ Java 21</span>
+                        <span class="tech-badge">🍃 Spring Boot 4.0</span>
+                        <span class="tech-badge">🗄️ MySQL</span>
+                        <span class="tech-badge">🔒 Spring Security</span>
+                        <span class="tech-badge">🎫 JWT Authentication</span>
+                        <span class="tech-badge">📘 JPA/Hibernate</span>
+                        <span class="tech-badge">🌐 HTML5</span>
+                        <span class="tech-badge">🎨 CSS3</span>
+                        <span class="tech-badge">⚡ JavaScript</span>
+                        <span class="tech-badge">📡 REST API</span>
+                    </div>
+                </div>
+
+                <!-- Help Section -->
+                <div class="about-section help-section">
+                    <h2>❓ How to Use</h2>
+                    <ul class="help-list">
+                        <li>
+                            <span class="help-icon">🔐</span>
+                            <div class="help-text">
+                                <strong>Create an Account</strong>
+                                <span>Click "Login" in the navbar, then select "Register Instead" to create a new
+                                    account</span>
+                            </div>
+                        </li>
+                        <li>
+                            <span class="help-icon">🛍️</span>
+                            <div class="help-text">
+                                <strong>Browse Products</strong>
+                                <span>Use category filters or search bar to find products. Click on any product for
+                                    details.</span>
+                            </div>
+                        </li>
+                        <li>
+                            <span class="help-icon">🛒</span>
+                            <div class="help-text">
+                                <strong>Add to Cart</strong>
+                                <span>Click "Add to Cart" on any available product. View your cart by clicking the cart
+                                    icon.</span>
+                            </div>
+                        </li>
+                        <li>
+                            <span class="help-icon">💳</span>
+                            <div class="help-text">
+                                <strong>Checkout</strong>
+                                <span>Open your cart, click "Proceed to Checkout", enter shipping details, and place
+                                    your order.</span>
+                            </div>
+                        </li>
+                        <li>
+                            <span class="help-icon">📦</span>
+                            <div class="help-text">
+                                <strong>Track Orders</strong>
+                                <span>Go to "Orders" page to view order status and history.</span>
+                            </div>
+                        </li>
+                        <li>
+                            <span class="help-icon">⭐</span>
+                            <div class="help-text">
+                                <strong>Leave Reviews</strong>
+                                <span>Click on any product to open details, scroll down to write your review.</span>
+                            </div>
+                        </li>
+                    </ul>
+                </div>
+
+                <!-- Team Section -->
+                <div class="about-section">
+                    <h2>👥 Our Team</h2>
+                    <p>This project was developed by the following team members from IIIT Hyderabad:</p>
+
+                    <div class="team-grid">
+                        <div class="team-card">
+                            <div class="team-avatar">AP</div>
+                            <div class="team-name">Ayush Patel</div>
+                            <div class="team-roll">BT2024054</div>
+                        </div>
+                        <div class="team-card">
+                            <div class="team-avatar">NJ</div>
+                            <div class="team-name">Naman Jindal</div>
+                            <div class="team-roll">BT2024203</div>
+                        </div>
+                        <div class="team-card">
+                            <div class="team-avatar">SS</div>
+                            <div class="team-name">Sachin Singh Nain</div>
+                            <div class="team-roll">BT2024201</div>
+                        </div>
+                        <div class="team-card">
+                            <div class="team-avatar">AM</div>
+                            <div class="team-name">Aryan Malik</div>
+                            <div class="team-roll">BT2024006</div>
+                        </div>
+                        <div class="team-card">
+                            <div class="team-avatar">TD</div>
+                            <div class="team-name">Tanmay Dixit</div>
+                            <div class="team-roll">BT2024016</div>
+                        </div>
+                        <div class="team-card">
+                            <div class="team-avatar">KA</div>
+                            <div class="team-name">Kabir Ahuja</div>
+                            <div class="team-roll">BT2024004</div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Footer -->
+                <div style="text-align: center; margin-top: 40px;">
+                    <a href="index.html" class="back-btn">← Back to Shopping</a>
+                    <p style="margin-top: 20px; color: rgba(255,255,255,0.5); font-size: 13px;">
+                        © 2024 ApniDukaan - College Project
+                    </p>
+                </div>
+            </div>
+        </div>
+    </div>
+</body>
+
+</html>
