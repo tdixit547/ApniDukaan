@@ -1,0 +1,258 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8" />
+  <title>ApniDukaan — Your Online Store</title>
+  <meta name="description" content="Shop premium electronics, fashion and accessories on ApniDukaan. Fast delivery, secure payments." />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet" />
+  <link rel="stylesheet" href="style.css" />
+</head>
+
+<body>
+  <div class="page">
+    <div class="customer-portal">
+      <div class="navbar">
+        <div class="nav-left">
+          <div class="logo">ApniDukaan</div>
+
+          <div class="nav-links">
+            <a href="index.html" class="nav-link nav-link-active" id="navShop">Shop</a>
+            <a href="orders.html" class="nav-link" id="navOrders">Orders</a>
+            <a href="profile.html" class="nav-link" id="navProfile">Profile</a>
+          </div>
+        </div>
+        <div class="nav-right">
+          <div class="nav-search">
+            <span class="nav-search-icon">🔍</span>
+            <input type="text" class="nav-search-input" placeholder="Search for products..." />
+          </div>
+
+          <div class="cart-chip">
+            <span class="cart-label">Cart</span>
+            <span class="cart-count">0</span>
+          </div>
+        </div>
+      </div>
+      <div class="main-placeholder">
+      </div>
+      <div class="hero">
+        <div class="hero-text">
+          <div class="hero-pill">Latest Tech Drops!</div>
+
+          <h1 class="hero-title">Upgrade Your Digital Lifestyle.</h1>
+
+          <p class="hero-subtitle">
+            Premium electronics, latest smartphones, and accessories – delivered to your door.
+          </p>
+
+          <div class="hero-actions">
+            <button class="btn-primary" onclick="window.scrollTo({top: 800, behavior: 'smooth'})">Shop Now</button>
+            <button class="btn-ghost" onclick="window.scrollTo({top: 800, behavior: 'smooth'})">View Offers</button>
+          </div>
+        </div>
+
+        <div class="hero-preview">
+          <div class="hero-card hero-card-one" onclick="showProductDetails(1)" style="cursor: pointer;">
+            <span class="hero-card-label">Best Seller</span>
+            <span class="hero-card-title">iPhone 14 128GB</span>
+            <span class="hero-card-price">₹89,567</span>
+          </div>
+
+          <div class="hero-card hero-card-two" onclick="showProductDetails(2)" style="cursor: pointer;">
+            <span class="hero-card-label">Trending</span>
+            <span class="hero-card-title">Samsung Galaxy M33</span>
+            <span class="hero-card-price">₹17,999</span>
+          </div>
+        </div>
+      </div>
+      <div class="filters-bar">
+        <div class="filters-left">
+          <div class="filter-title">Filters</div>
+
+          <div class="filter-chips" id="filterChips">
+            <button class="chip chip-active" data-filter="all">All</button>
+            <button class="chip" data-filter="Clothing">Clothing</button>
+            <button class="chip" data-filter="Accessories">Accessories</button>
+            <button class="chip" data-filter="Electronics">Electronics</button>
+          </div>
+        </div>
+
+        <div class="filters-right">
+          <div class="sort-display">
+            <span class="sort-label">Sort by</span>
+            <span class="sort-value">Most Popular ▾</span>
+          </div>
+        </div>
+      </div>
+      <div class="product-grid">
+        <div class="product-card">
+          <div class="product-image">Classic T-Shirt</div>
+
+          <div class="product-content">
+            <div class="product-name-row">
+              <span class="product-name">Classic T-Shirt</span>
+              <span class="product-tag">New</span>
+            </div>
+
+            <span class="product-desc">
+              Soft cotton tee with relaxed fit.
+            </span>
+
+            <div class="product-bottom">
+              <div class="price-block">
+                <span class="product-price">₹499</span>
+                <span class="product-price-muted">₹699</span>
+              </div>
+              <button class="btn-add">Add to Cart</button>
+            </div>
+          </div>
+        </div>
+        <div class="product-card">
+          <div class="product-image">Oversized Hoodie</div>
+
+          <div class="product-content">
+            <div class="product-name-row">
+              <span class="product-name">Oversized Hoodie</span>
+              <span class="product-tag product-tag-alt">-20%</span>
+            </div>
+
+            <span class="product-desc">
+              Cozy fleece hoodie for chilly days.
+            </span>
+
+            <div class="product-bottom">
+              <div class="price-block">
+                <span class="product-price">₹1,199</span>
+                <span class="product-price-muted">₹1,499</span>
+              </div>
+              <button class="btn-add">Add to Cart</button>
+            </div>
+          </div>
+        </div>
+
+        <div class="product-card">
+          <div class="product-image">Minimal Sneakers</div>
+
+          <div class="product-content">
+            <div class="product-name-row">
+              <span class="product-name">Minimal Sneakers</span>
+              <span class="product-tag">Hot</span>
+            </div>
+
+            <span class="product-desc">
+              Clean white sneakers suitable for any outfit.
+            </span>
+
+            <div class="product-bottom">
+              <div class="price-block">
+                <span class="product-price">₹1,999</span>
+                <span class="product-price-muted">₹2,499</span>
+              </div>
+              <button class="btn-add">Add to Cart</button>
+            </div>
+          </div>
+        </div>
+
+        <div class="product-card">
+          <div class="product-image">Tote Bag</div>
+
+          <div class="product-content">
+            <div class="product-name-row">
+              <span class="product-name">Everyday Tote Bag</span>
+              <span class="product-tag product-tag-alt">Eco</span>
+            </div>
+
+            <span class="product-desc">
+              Durable canvas tote with laptop sleeve.
+            </span>
+
+            <div class="product-bottom">
+              <div class="price-block">
+                <span class="product-price">₹799</span>
+                <span class="product-price-muted">₹999</span>
+              </div>
+              <button class="btn-add">Add to Cart</button>
+            </div>
+          </div>
+        </div>
+
+      </div>
+      <!-- ✅ CART PANEL -->
+      <div class="cart-panel">
+
+        <!-- Header -->
+        <div class="cart-header">
+          <div class="cart-title-block">
+            <span class="cart-title">Your Cart</span>
+            <span class="cart-subtitle">0 items</span>
+          </div>
+
+          <button class="btn-ghost-small">Clear</button>
+        </div>
+
+        <!-- Items List -->
+        <div class="cart-items">
+          <!-- Cart items will be loaded dynamically via JavaScript -->
+          <div class="empty-state" style="padding: 40px 20px;">
+            <div class="empty-state-icon" style="font-size: 48px;">🛒</div>
+            <div class="empty-state-title" style="font-size: 16px; margin: 12px 0;">Please Login</div>
+            <div class="empty-state-message" style="font-size: 13px;">Login to see your cart items</div>
+          </div>
+        </div>
+
+        <!-- Summary -->
+        <div class="cart-summary">
+          <div class="cart-summary-row">
+            <span class="cart-summary-label">Subtotal</span>
+            <span class="cart-summary-value">₹2,798</span>
+          </div>
+
+          <div class="cart-summary-row">
+            <span class="cart-summary-label">Shipping</span>
+            <span class="cart-summary-value">₹99</span>
+          </div>
+
+          <div class="cart-summary-row cart-summary-row-total">
+            <span class="cart-summary-label">Total</span>
+            <span class="cart-summary-value">₹2,897</span>
+          </div>
+        </div>
+
+        <button class="btn-primary btn-checkout">Proceed to Checkout</button>
+
+        <div class="cart-footer-note">
+          <span>Secure checkout · No extra charges at delivery</span>
+        </div>
+
+      </div>
+      <!-- ✅ FOOTER -->
+      <div class="footer">
+        <div class="footer-left">
+          © 2025 ApniDukaan. All rights reserved.
+        </div>
+
+        <div class="footer-right">
+          <span>Help</span>
+          <span>Returns</span>
+          <span>Terms</span>
+        </div>
+      </div>
+
+
+      <!-- ✅ CART BACKDROP -->
+      <div class="cart-backdrop" id="cartBackdrop"></div>
+
+    </div>
+  </div>
+
+  <!-- ✅ HELP BUTTON (FLOATING) - Links to About Page -->
+  <a href="about.html" class="help-button" id="helpButton" title="Help & About">?</a>
+
+  <script src="app.js"></script>
+</body>
+
+</html>
