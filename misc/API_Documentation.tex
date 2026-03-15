@@ -1,0 +1,1883 @@
+% ============================================
+% Java-Codeblooded E-Commerce API Documentation
+% Comprehensive REST API Reference Report
+% ============================================
+
+\documentclass[12pt, a4paper]{article}
+
+% Essential Packages
+\usepackage[utf8]{inputenc}
+\usepackage[T1]{fontenc}
+\usepackage{lmodern}
+\usepackage[margin=1in]{geometry}
+\usepackage{graphicx}
+\usepackage{xcolor}
+\usepackage{listings}
+\usepackage{hyperref}
+\usepackage{booktabs}
+\usepackage{longtable}
+\usepackage{fancyhdr}
+\usepackage{titlesec}
+\usepackage{enumitem}
+\usepackage{float}
+\usepackage{tcolorbox}
+
+% Color Definitions
+\definecolor{codegreen}{rgb}{0,0.6,0}
+\definecolor{codegray}{rgb}{0.5,0.5,0.5}
+\definecolor{codepurple}{rgb}{0.58,0,0.82}
+\definecolor{backcolour}{rgb}{0.97,0.97,0.97}
+\definecolor{getcolor}{RGB}{97, 175, 254}
+\definecolor{postcolor}{RGB}{73, 204, 144}
+\definecolor{putcolor}{RGB}{252, 161, 48}
+\definecolor{deletecolor}{RGB}{249, 62, 62}
+\definecolor{primaryblue}{RGB}{41, 98, 255}
+\definecolor{darkblue}{RGB}{25, 55, 109}
+
+% Hyperlink Setup
+\hypersetup{
+    colorlinks=true,
+    linkcolor=darkblue,
+    filecolor=magenta,
+    urlcolor=primaryblue,
+    pdftitle={Java-Codeblooded API Documentation},
+    pdfauthor={E-Commerce Development Team},
+}
+
+% Code Listing Style
+\lstdefinestyle{jsonstyle}{
+    backgroundcolor=\color{backcolour},
+    commentstyle=\color{codegreen},
+    keywordstyle=\color{codepurple},
+    numberstyle=\tiny\color{codegray},
+    stringstyle=\color{codegreen},
+    basicstyle=\ttfamily\footnotesize,
+    breakatwhitespace=false,
+    breaklines=true,
+    captionpos=b,
+    keepspaces=true,
+    numbers=none,
+    showspaces=false,
+    showstringspaces=false,
+    showtabs=false,
+    tabsize=2,
+    frame=single,
+    rulecolor=\color{codegray},
+}
+
+\lstset{style=jsonstyle}
+
+% Custom Commands for HTTP Method Badges
+\newcommand{\getbadge}{\colorbox{getcolor!20}{\textcolor{getcolor}{\textbf{GET}}}}
+\newcommand{\postbadge}{\colorbox{postcolor!20}{\textcolor{postcolor}{\textbf{POST}}}}
+\newcommand{\putbadge}{\colorbox{putcolor!20}{\textcolor{putcolor}{\textbf{PUT}}}}
+\newcommand{\deletebadge}{\colorbox{deletecolor!20}{\textcolor{deletecolor}{\textbf{DELETE}}}}
+
+% Header and Footer Configuration
+\pagestyle{fancy}
+\fancyhf{}
+\fancyhead[L]{\leftmark}
+\fancyhead[R]{Java-Codeblooded API}
+\fancyfoot[C]{\thepage}
+\renewcommand{\headrulewidth}{0.4pt}
+\renewcommand{\footrulewidth}{0.4pt}
+
+% Title Formatting
+\titleformat{\section}
+    {\normalfont\LARGE\bfseries\color{darkblue}}
+    {\thesection}{1em}{}[\titlerule]
+
+\titleformat{\subsection}
+    {\normalfont\large\bfseries\color{primaryblue}}
+    {\thesubsection}{1em}{}
+
+% ============================================
+% DOCUMENT START
+% ============================================
+
+\begin{document}
+
+% Title Page
+\begin{titlepage}
+    \centering
+    \vspace*{2cm}
+    
+    {\Huge\bfseries\color{darkblue} Java-Codeblooded\\[0.3cm]}
+    {\LARGE\color{primaryblue} E-Commerce Platform\\[0.5cm]}
+    
+    \rule{\textwidth}{1.5pt}\\[0.5cm]
+    
+    {\Huge\bfseries REST API Documentation\\[0.3cm]}
+    {\Large Complete Postman Collection Reference\\[1cm]}
+    
+    \rule{\textwidth}{1.5pt}\\[2cm]
+    
+    {\Large\textbf{Total APIs: 30 Endpoints}}\\[0.5cm]
+    {\Large\textbf{Across 7 Sections}}\\[2cm]
+    
+    \begin{tabular}{|l|c|l|}
+        \hline
+        \textbf{Section} & \textbf{Count} & \textbf{Description} \\
+        \hline
+        Authentication & 2 & Register, Login \\
+        Categories & 5 & CRUD Operations \\
+        Products & 7 & CRUD + Search + Filter \\
+        Shopping Cart & 4 & Add, View, Update, Remove \\
+        Orders & 4 & Create, View, Status \\
+        Reviews & 3 & Add, View, Ratings \\
+        Users & 5 & Profile, Password, Delete \\
+        \hline
+    \end{tabular}
+    
+    \vfill
+    
+    {\large\textbf{Base URL:} \texttt{http://localhost:8080}}\\[0.5cm]
+    {\large\today}
+    
+\end{titlepage}
+
+% Table of Contents
+\tableofcontents
+\newpage
+
+% ============================================
+% SECTION 1: AUTHENTICATION
+% ============================================
+\section{Authentication APIs (2 Endpoints)}
+
+This section covers user authentication including registration and login functionality.
+
+% API 1: Register
+\subsection{API 1: Register New User}
+
+\begin{tcolorbox}[colback=postcolor!10, colframe=postcolor, title=POST]
+\textbf{Endpoint:} \texttt{http://localhost:8080/api/auth/register}
+\end{tcolorbox}
+
+\textbf{Description:} Registers a new user account in the system.
+
+\textbf{Request Body:}
+\begin{lstlisting}
+{
+  "email": "raj.shamani@gmail.com",
+  "password": "password123",
+  "firstName": "Raj",
+  "lastName": "Shamani",
+  "phone": "9876543210"
+}
+\end{lstlisting}
+
+\textbf{Expected Response (201 Created):}
+\begin{lstlisting}
+{
+    "address": null,
+    "email": "raj.shamani@gmail.com",
+    "firstName": "Raj",
+    "id": 12,
+    "lastName": "Shamani",
+    "name": "Raj Shamani",
+    "phone": "9876543210",
+    "phoneNumber": "9876543210",
+    "role": "CUSTOMER"
+}
+\end{lstlisting}
+
+\vspace{0.5cm}
+
+% API 2: Login
+\subsection{API 2: Login User}
+
+\begin{tcolorbox}[colback=postcolor!10, colframe=postcolor, title=POST]
+\textbf{Endpoint:} \texttt{http://localhost:8080/api/auth/login}
+\end{tcolorbox}
+
+\textbf{Description:} Authenticates a user and returns an access token.
+
+\textbf{Request Body:}
+\begin{lstlisting}
+{
+  "email": "raj.shamani@gmail.com",
+  "password": "password123"
+}
+\end{lstlisting}
+
+\textbf{Expected Response (200 OK):}
+\begin{lstlisting}
+{
+    "token": "eyJhbGciOiJIUzI1NiJ9.eyJzdWIiOiJyYWouc2hhbWFuaUBnbWFpbC5jb20iLCJpYXQiOjE3NjUzNDMxMDAsImV4cCI6MTc2NTQyOTUwMH0.IDAuQFVtf0vt9P0BJnkNaODDu7r9cnm7V0CtwsGB7T4",
+    "tokenType": "Bearer",
+    "expiresAt": "2025-12-11T05:05:00.885819Z",
+    "user": {
+        "address": null,
+        "email": "raj.shamani@gmail.com",
+        "firstName": "Raj",
+        "id": 12,
+        "lastName": "Shamani",
+        "name": "Raj Shamani",
+        "phone": "9876543210",
+        "phoneNumber": "9876543210",
+        "role": "CUSTOMER"
+    }
+}
+\end{lstlisting}
+
+\newpage
+
+% ============================================
+% SECTION 2: CATEGORIES
+% ============================================
+\section{Categories APIs (5 Endpoints)}
+
+This section covers category management operations including creation, retrieval, update, and deletion.
+
+% API 3: Get All Categories
+\subsection{API 3: Get All Categories}
+
+\begin{tcolorbox}[colback=getcolor!10, colframe=getcolor, title=GET]
+\textbf{Endpoint:} \texttt{http://localhost:8080/api/categories}
+\end{tcolorbox}
+
+\textbf{Description:} Retrieves all product categories available in the system.
+
+\textbf{Request Body:} None required.
+
+\textbf{Expected Response (200 OK):}
+\begin{lstlisting}
+[
+    {
+        "description": "Mobile phones, laptops, and electronic gadgets",
+        "id": 1,
+        "name": "Electronics",
+        "slug": "electronics"
+    },
+    {
+        "description": "Clothing, footwear, and accessories",
+        "id": 2,
+        "name": "Fashion",
+        "slug": "fashion"
+    },
+    {
+        "description": "Home appliances and kitchen essentials",
+        "id": 3,
+        "name": "Home & Kitchen",
+        "slug": "home-kitchen"
+    },
+    {
+        "description": "Fiction, non-fiction, and educational books",
+        "id": 4,
+        "name": "Books",
+        "slug": "books"
+    },
+    {
+        "description": "Sports equipment and fitness accessories",
+        "id": 5,
+        "name": "Sports & Fitness",
+        "slug": "sports-fitness"
+    },
+    {
+        "description": "Fun for everyone",
+        "id": 7,
+        "name": "Toys & Games",
+        "slug": "toys--games"
+    },
+    {
+        "description": "STEEL AND PLASTIC ",
+        "id": 9,
+        "name": "BOTTLE",
+        "slug": "bottle"
+    }
+]
+\end{lstlisting}
+
+\vspace{0.5cm}
+
+% API 4: Create Category
+\subsection{API 4: Create Category (Admin)}
+
+\begin{tcolorbox}[colback=postcolor!10, colframe=postcolor, title=POST]
+\textbf{Endpoint:} \texttt{http://localhost:8080/api/categories}
+\end{tcolorbox}
+
+\textbf{Description:} Creates a new product category. \textit{Requires Admin privileges.}
+
+\textbf{Request Body:}
+\begin{lstlisting}
+{
+  "name": "Electronics 2",
+  "description": "Mobile phones, laptops, and electronic gadgets"
+}
+\end{lstlisting}
+
+\textbf{Expected Response (201 Created):}
+\begin{lstlisting}
+{
+    "description": "Mobile phones, laptops, and electronic gadgets",
+    "id": 10,
+    "name": "Electronics 2",
+    "slug": "electronics-2"
+}
+\end{lstlisting}
+
+\vspace{0.5cm}
+
+% API 5: Get Category by ID
+\subsection{API 5: Get Category by ID}
+
+\begin{tcolorbox}[colback=getcolor!10, colframe=getcolor, title=GET]
+\textbf{Endpoint:} \texttt{http://localhost:8080/api/categories/1}
+\end{tcolorbox}
+
+\textbf{Description:} Retrieves a specific category by its unique identifier.
+
+\textbf{Path Parameter:}
+\begin{itemize}
+    \item \texttt{id} - Category ID (e.g., 1)
+\end{itemize}
+
+\textbf{Request Body:} None required.
+
+\textbf{Expected Response (200 OK):}
+\begin{lstlisting}
+{
+    "description": "Mobile phones, laptops, and electronic gadgets",
+    "id": 1,
+    "name": "Electronics",
+    "slug": "electronics"
+}
+\end{lstlisting}
+
+\vspace{0.5cm}
+
+% API 6: Update Category
+\subsection{API 6: Update Category (Admin)}
+
+\begin{tcolorbox}[colback=putcolor!10, colframe=putcolor, title=PUT]
+\textbf{Endpoint:} \texttt{http://localhost:8080/api/categories/1}
+\end{tcolorbox}
+
+\textbf{Description:} Updates an existing category. \textit{Requires Admin privileges.}
+
+\textbf{Path Parameter:}
+\begin{itemize}
+    \item \texttt{id} - Category ID (e.g., 1)
+\end{itemize}
+
+\textbf{Request Body:}
+\begin{lstlisting}
+{
+  "name": "Electronics & Gadgets",
+  "description": "Updated description"
+}
+\end{lstlisting}
+
+\textbf{Expected Response (200 OK):}
+\begin{lstlisting}
+{
+    "description": "Updated description",
+    "id": 1,
+    "name": "Electronics & Gadgets",
+    "slug": "electronics--gadgets"
+}
+\end{lstlisting}
+
+\vspace{0.5cm}
+
+% API 7: Delete Category
+\subsection{API 7: Delete Category (Admin)}
+
+\begin{tcolorbox}[colback=deletecolor!10, colframe=deletecolor, title=DELETE]
+\textbf{Endpoint:} \texttt{http://localhost:8080/api/categories/9}
+\end{tcolorbox}
+
+\textbf{Description:} Deletes a category from the system. \textit{Requires Admin privileges.}
+
+\textbf{Path Parameter:}
+\begin{itemize}
+    \item \texttt{id} - Category ID (e.g., 9)
+\end{itemize}
+
+\textbf{Request Body:} None required.
+
+\textbf{Expected Response (200 OK):}
+\begin{lstlisting}
+Category deleted successfully
+\end{lstlisting}
+
+\newpage
+
+% ============================================
+% SECTION 3: PRODUCTS
+% ============================================
+\section{Products APIs (7 Endpoints)}
+
+This section covers product management including CRUD operations, search, and category filtering.
+
+% API 8: Get All Products
+\subsection{API 8: Get All Products (Paginated)}
+
+\begin{tcolorbox}[colback=getcolor!10, colframe=getcolor, title=GET]
+\textbf{Endpoint:} \texttt{http://localhost:8080/api/products?page=0\&size=10}
+\end{tcolorbox}
+
+\textbf{Description:} Retrieves all products with pagination support.
+
+\textbf{Query Parameters:}
+\begin{itemize}
+    \item \texttt{page} - Page number (0-indexed)
+    \item \texttt{size} - Number of items per page
+\end{itemize}
+
+\textbf{Request Body:} None required.
+
+\textbf{Expected Response (200 OK):}
+\begin{lstlisting}
+{
+    "content": [
+        {
+            "basePrice": 79900.00,
+            "categoryId": 1,
+            "categoryName": "Electronics & Gadgets",
+            "description": "Apple iPhone 14 with A15 Bionic chip",
+            "discount": 5.00,
+            "finalPrice": 89567.90,
+            "id": 1,
+            "imageUrl": "/photos/iphone.jpeg",
+            "name": "iPhone 14 128GB",
+            "sku": "IPHONE14-128",
+            "stock": 97,
+            "tax": 18.00
+        },
+        {
+            "basePrice": 16999.00,
+            "categoryId": 1,
+            "categoryName": "Electronics & Gadgets",
+            "description": "Samsung Galaxy M33 with 6GB RAM",
+            "discount": 10.01,
+            "finalPrice": 18050.93,
+            "id": 2,
+            "imageUrl": "/photos/galaxy m33.jpeg",
+            "name": "Samsung Galaxy M33 5G",
+            "sku": "SAMSUNG-M33",
+            "stock": 96,
+            "tax": 18.00
+        },
+        {
+            "basePrice": 52990.00,
+            "categoryId": 1,
+            "categoryName": "Electronics & Gadgets",
+            "description": "Dell Inspiron 15 with Intel i5",
+            "discount": 8.00,
+            "finalPrice": 57525.94,
+            "id": 3,
+            "imageUrl": "/photos/dell laptop.jpeg",
+            "name": "Dell Inspiron 15 Laptop",
+            "sku": "DELL-LAPTOP",
+            "stock": 99,
+            "tax": 18.00
+        },
+        {
+            "basePrice": 2999.00,
+            "categoryId": 2,
+            "categoryName": "Fashion",
+            "description": "Levis 511 Slim Fit Jeans",
+            "discount": 20.00,
+            "finalPrice": 2687.10,
+            "id": 4,
+            "imageUrl": "/photos/levis jeans.jpeg",
+            "name": "Levis 511 Slim Fit Jeans",
+            "sku": "LEVIS-JEANS",
+            "stock": 103,
+            "tax": 12.00
+        },
+        {
+            "basePrice": 5499.00,
+            "categoryId": 2,
+            "categoryName": "Fashion",
+            "description": "Nike Air Max running shoes",
+            "discount": 15.00,
+            "finalPrice": 5235.05,
+            "id": 5,
+            "imageUrl": "/photos/nike air max.jpeg",
+            "name": "Nike Air Max Running Shoes",
+            "sku": "NIKE-SHOES",
+            "stock": 100,
+            "tax": 12.00
+        },
+        {
+            "basePrice": 2199.00,
+            "categoryId": 3,
+            "categoryName": "Home & Kitchen",
+            "description": "Prestige Deluxe Alpha",
+            "discount": 12.00,
+            "finalPrice": 2283.44,
+            "id": 6,
+            "imageUrl": "/photos/cooker.jpeg",
+            "name": "Prestige Pressure Cooker 5L",
+            "sku": "PRESTIGE-COOKER",
+            "stock": 100,
+            "tax": 18.00
+        },
+        {
+            "basePrice": 1295.00,
+            "categoryId": 3,
+            "categoryName": "Home & Kitchen",
+            "description": "Philips GC1905 1440-Watt",
+            "discount": 10.00,
+            "finalPrice": 1375.29,
+            "id": 7,
+            "imageUrl": "/photos/iron.jpeg",
+            "name": "Philips Steam Iron",
+            "sku": "PHILIPS-IRON",
+            "stock": 100,
+            "tax": 18.00
+        },
+        {
+            "basePrice": 299.00,
+            "categoryId": 4,
+            "categoryName": "Books",
+            "description": "Ikigai by Héctor García",
+            "discount": 15.00,
+            "finalPrice": 254.15,
+            "id": 8,
+            "imageUrl": "/photos/ikigai.webp",
+            "name": "Ikigai: The Japanese Secret",
+            "sku": "IKIGAI-BOOK",
+            "stock": 100,
+            "tax": 0.00
+        },
+        {
+            "basePrice": 499.00,
+            "categoryId": 4,
+            "categoryName": "Books",
+            "description": "Sapiens by Yuval Noah Harari",
+            "discount": 20.00,
+            "finalPrice": 399.20,
+            "id": 9,
+            "imageUrl": "/photos/sapiens.webp",
+            "name": "Sapiens: A Brief History",
+            "sku": "SAPIENS-BOOK",
+            "stock": 100,
+            "tax": 0.00
+        },
+        {
+            "basePrice": 799.00,
+            "categoryId": 5,
+            "categoryName": "Sports & Fitness",
+            "description": "Premium yoga mat",
+            "discount": 25.00,
+            "finalPrice": 707.12,
+            "id": 10,
+            "imageUrl": "/photos/yoga mat.jpeg",
+            "name": "Anti-Skid Yoga Mat",
+            "sku": "YOGA-MAT",
+            "stock": 98,
+            "tax": 18.00
+        }
+    ],
+    "empty": false,
+    "first": true,
+    "last": false,
+    "number": 0,
+    "numberOfElements": 10,
+    "pageable": {
+        "offset": 0,
+        "pageNumber": 0,
+        "pageSize": 10,
+        "paged": true,
+        "sort": {
+            "empty": true,
+            "sorted": false,
+            "unsorted": true
+        },
+        "unpaged": false
+    },
+    "size": 10,
+    "sort": {
+        "empty": true,
+        "sorted": false,
+        "unsorted": true
+    },
+    "totalElements": 15,
+    "totalPages": 2
+}
+\end{lstlisting}
+
+\vspace{0.5cm}
+
+% API 9: Get Product by ID
+\subsection{API 9: Get Product by ID}
+
+\begin{tcolorbox}[colback=getcolor!10, colframe=getcolor, title=GET]
+\textbf{Endpoint:} \texttt{http://localhost:8080/api/products/10}
+\end{tcolorbox}
+
+\textbf{Description:} Retrieves a specific product by its unique identifier.
+
+\textbf{Path Parameter:}
+\begin{itemize}
+    \item \texttt{id} - Product ID (e.g., 10)
+\end{itemize}
+
+\textbf{Request Body:} None required.
+
+\textbf{Expected Response (200 OK):}
+\begin{lstlisting}
+{
+    "basePrice": 799.00,
+    "categoryId": 5,
+    "categoryName": "Sports & Fitness",
+    "description": "Premium yoga mat",
+    "discount": 25.00,
+    "finalPrice": 707.12,
+    "id": 10,
+    "imageUrl": "/photos/yoga mat.jpeg",
+    "name": "Anti-Skid Yoga Mat",
+    "sku": "YOGA-MAT",
+    "stock": 98,
+    "tax": 18.00
+}
+\end{lstlisting}
+
+\vspace{0.5cm}
+
+% API 10: Create Product
+\subsection{API 10: Create Product (Admin)}
+
+\begin{tcolorbox}[colback=postcolor!10, colframe=postcolor, title=POST]
+\textbf{Endpoint:} \texttt{http://localhost:8080/api/products}
+\end{tcolorbox}
+
+\textbf{Description:} Creates a new product in the catalog. \textit{Requires Admin privileges.}
+
+\textbf{Request Body:}
+\begin{lstlisting}
+{
+  "name": "iPhone 13 128GB",
+  "description": "Apple iPhone 14 with A15 Bionic chip",
+  "sku": "IPHONE14-128",
+  "basePrice": 79900,
+  "tax": 18,
+  "discount": 5,
+  "stock": 25,
+  "categoryId": 17
+}
+\end{lstlisting}
+
+\textbf{Expected Response (201 Created):}
+\begin{lstlisting}
+{
+  "id": 1,
+  "name": "iPhone 13 128GB",
+  "basePrice": 79900.00,
+  "finalPrice": 89431.95,
+  "stock": 25,
+  "categoryName": "Electronics"
+}
+\end{lstlisting}
+
+\vspace{0.5cm}
+
+% API 11: Update Product
+\subsection{API 11: Update Product (Admin)}
+
+\begin{tcolorbox}[colback=putcolor!10, colframe=putcolor, title=PUT]
+\textbf{Endpoint:} \texttt{http://localhost:8080/api/products/17}
+\end{tcolorbox}
+
+\textbf{Description:} Updates an existing product. \textit{Requires Admin privileges.}
+
+\textbf{Path Parameter:}
+\begin{itemize}
+    \item \texttt{id} - Product ID (e.g., 17)
+\end{itemize}
+
+\textbf{Request Body:}
+\begin{lstlisting}
+{
+  "name": "iPhone 13 128GB - Updated",
+  "basePrice": 74900,
+  "stock": 30
+}
+\end{lstlisting}
+
+\textbf{Expected Response (200 OK):}
+\begin{lstlisting}
+{
+    "basePrice": 74900,
+    "categoryId": 1,
+    "categoryName": "Electronics & Gadgets",
+    "description": "VU 55 inch TV ",
+    "discount": 10.00,
+    "finalPrice": 79543.80,
+    "id": 17,
+    "imageUrl": "/photos/television.jpeg",
+    "name": "iPhone 13 128GB - Updated",
+    "sku": null,
+    "stock": 30,
+    "tax": 18.00
+}
+\end{lstlisting}
+
+\vspace{0.5cm}
+
+% API 12: Delete Product
+\subsection{API 12: Delete Product (Admin)}
+
+\begin{tcolorbox}[colback=deletecolor!10, colframe=deletecolor, title=DELETE]
+\textbf{Endpoint:} \texttt{http://localhost:8080/api/products/17}
+\end{tcolorbox}
+
+\textbf{Description:} Deletes a product from the catalog. \textit{Requires Admin privileges.}
+
+\textbf{Path Parameter:}
+\begin{itemize}
+    \item \texttt{id} - Product ID (e.g., 17)
+\end{itemize}
+
+\textbf{Request Body:} None required.
+
+\textbf{Expected Response (200 OK):}
+\begin{lstlisting}
+Product deleted successfully
+\end{lstlisting}
+
+\vspace{0.5cm}
+
+% API 13: Search Products
+\subsection{API 13: Search Products}
+
+\begin{tcolorbox}[colback=getcolor!10, colframe=getcolor, title=GET]
+\textbf{Endpoint:} \texttt{http://localhost:8080/api/products/search?query=iPhone}
+\end{tcolorbox}
+
+\textbf{Description:} Searches for products matching the query string.
+
+\textbf{Query Parameter:}
+\begin{itemize}
+    \item \texttt{query} - Search term (e.g., ``iPhone'')
+\end{itemize}
+
+\textbf{Request Body:} None required.
+
+\textbf{Expected Response (200 OK):}
+\begin{lstlisting}
+{
+    "content": [
+        {
+            "basePrice": 79900.00,
+            "categoryId": 1,
+            "categoryName": "Electronics & Gadgets",
+            "description": "Apple iPhone 14 with A15 Bionic chip",
+            "discount": 5.00,
+            "finalPrice": 89567.90,
+            "id": 1,
+            "imageUrl": "/photos/iphone.jpeg",
+            "name": "iPhone 14 128GB",
+            "sku": "IPHONE14-128",
+            "stock": 97,
+            "tax": 18.00
+        }
+    ],
+    "empty": false,
+    "first": true,
+    "last": true,
+    "number": 0,
+    "numberOfElements": 1,
+    "pageable": {
+        "offset": 0,
+        "pageNumber": 0,
+        "pageSize": 10,
+        "paged": true,
+        "sort": {
+            "empty": true,
+            "sorted": false,
+            "unsorted": true
+        },
+        "unpaged": false
+    },
+    "size": 10,
+    "sort": {
+        "empty": true,
+        "sorted": false,
+        "unsorted": true
+    },
+    "totalElements": 1,
+    "totalPages": 1
+}
+\end{lstlisting}
+
+\vspace{0.5cm}
+
+% API 14: Get Products by Category
+\subsection{API 14: Get Products by Category}
+
+\begin{tcolorbox}[colback=getcolor!10, colframe=getcolor, title=GET]
+\textbf{Endpoint:} \texttt{http://localhost:8080/api/products/category/1}
+\end{tcolorbox}
+
+\textbf{Description:} Retrieves all products belonging to a specific category.
+
+\textbf{Path Parameter:}
+\begin{itemize}
+    \item \texttt{categoryId} - Category ID (e.g., 1)
+\end{itemize}
+
+\textbf{Request Body:} None required.
+
+\textbf{Expected Response (200 OK):}
+\begin{lstlisting}
+{
+    "content": [
+        {
+            "basePrice": 79900.00,
+            "categoryId": 1,
+            "categoryName": "Electronics & Gadgets",
+            "description": "Apple iPhone 14 with A15 Bionic chip",
+            "discount": 5.00,
+            "finalPrice": 89567.90,
+            "id": 1,
+            "imageUrl": "/photos/iphone.jpeg",
+            "name": "iPhone 14 128GB",
+            "sku": "IPHONE14-128",
+            "stock": 97,
+            "tax": 18.00
+        },
+        {
+            "basePrice": 16999.00,
+            "categoryId": 1,
+            "categoryName": "Electronics & Gadgets",
+            "description": "Samsung Galaxy M33 with 6GB RAM",
+            "discount": 10.01,
+            "finalPrice": 18050.93,
+            "id": 2,
+            "imageUrl": "/photos/galaxy m33.jpeg",
+            "name": "Samsung Galaxy M33 5G",
+            "sku": "SAMSUNG-M33",
+            "stock": 96,
+            "tax": 18.00
+        },
+        {
+            "basePrice": 52990.00,
+            "categoryId": 1,
+            "categoryName": "Electronics & Gadgets",
+            "description": "Dell Inspiron 15 with Intel i5",
+            "discount": 8.00,
+            "finalPrice": 57525.94,
+            "id": 3,
+            "imageUrl": "/photos/dell laptop.jpeg",
+            "name": "Dell Inspiron 15 Laptop",
+            "sku": "DELL-LAPTOP",
+            "stock": 99,
+            "tax": 18.00
+        },
+        {
+            "basePrice": 79000.00,
+            "categoryId": 1,
+            "categoryName": "Electronics & Gadgets",
+            "description": "apple 13 inch macbook sky blue",
+            "discount": 5.00,
+            "finalPrice": 84056.00,
+            "id": 14,
+            "imageUrl": "/photos/macbook.jpeg",
+            "name": "Macbook m4",
+            "sku": null,
+            "stock": 70,
+            "tax": 12.00
+        }
+    ],
+    "empty": false,
+    "first": true,
+    "last": true,
+    "number": 0,
+    "numberOfElements": 4,
+    "pageable": {
+        "offset": 0,
+        "pageNumber": 0,
+        "pageSize": 10,
+        "paged": true,
+        "sort": {
+            "empty": true,
+            "sorted": false,
+            "unsorted": true
+        },
+        "unpaged": false
+    },
+    "size": 10,
+    "sort": {
+        "empty": true,
+        "sorted": false,
+        "unsorted": true
+    },
+    "totalElements": 4,
+    "totalPages": 1
+}
+\end{lstlisting}
+
+\newpage
+
+% ============================================
+% SECTION 4: SHOPPING CART
+% ============================================
+\section{Shopping Cart APIs (4 Endpoints)}
+
+This section covers shopping cart operations including viewing cart, adding items, updating quantities, and removing items.
+
+% API 15: View Cart
+\subsection{API 15: View Cart}
+
+\begin{tcolorbox}[colback=getcolor!10, colframe=getcolor, title=GET]
+\textbf{Endpoint:} \texttt{http://localhost:8080/api/cart?userId=1}
+\end{tcolorbox}
+
+\textbf{Description:} Retrieves the current shopping cart for a user.
+
+\textbf{Query Parameter:}
+\begin{itemize}
+    \item \texttt{userId} - User ID (e.g., 1)
+\end{itemize}
+
+\textbf{Request Body:} None required.
+
+\textbf{Expected Response (200 OK):}
+\begin{lstlisting}
+{
+    "id": 1,
+    "itemCount": 2,
+    "items": [
+        {
+            "id": 1,
+            "productId": 1,
+            "productImage": "/photos/iphone.jpeg",
+            "productName": "iPhone 14 128GB",
+            "quantity": 5,
+            "subtotal": 447159.75,
+            "unitPrice": 89431.95
+        },
+        {
+            "id": 2,
+            "productId": 8,
+            "productImage": "/photos/ikigai.webp",
+            "productName": "Ikigai: The Japanese Secret",
+            "quantity": 2,
+            "subtotal": 508.30,
+            "unitPrice": 254.15
+        }
+    ],
+    "totalAmount": 447668.05
+}
+\end{lstlisting}
+
+\vspace{0.5cm}
+
+% API 16: Add to Cart
+\subsection{API 16: Add Item to Cart}
+
+\begin{tcolorbox}[colback=postcolor!10, colframe=postcolor, title=POST]
+\textbf{Endpoint:} \texttt{http://localhost:8080/api/cart/items?userId=8}
+\end{tcolorbox}
+
+\textbf{Description:} Adds a product to the user's shopping cart.
+
+\textbf{Query Parameter:}
+\begin{itemize}
+    \item \texttt{userId} - User ID (e.g., 8)
+\end{itemize}
+
+\textbf{Request Body:}
+\begin{lstlisting}
+{
+  "productId": 1,
+  "quantity": 2
+}
+\end{lstlisting}
+
+\textbf{Expected Response (201 Created):}
+\begin{lstlisting}
+{
+    "id": 22,
+    "productId": 1,
+    "productImage": "/photos/iphone.jpeg",
+    "productName": "iPhone 14 128GB",
+    "quantity": 2,
+    "subtotal": 179135.80,
+    "unitPrice": 89567.90
+}
+\end{lstlisting}
+
+\vspace{0.5cm}
+
+% API 17: Update Cart
+\subsection{API 17: Update Cart Item Quantity}
+
+\begin{tcolorbox}[colback=putcolor!10, colframe=putcolor, title=PUT]
+\textbf{Endpoint:} \texttt{http://localhost:8080/api/cart/items/1?userId=8}
+\end{tcolorbox}
+
+\textbf{Description:} Updates the quantity of an item in the cart.
+
+\textbf{Path Parameter:}
+\begin{itemize}
+    \item \texttt{itemId} - Cart Item ID (e.g., 1)
+\end{itemize}
+
+\textbf{Query Parameter:}
+\begin{itemize}
+    \item \texttt{userId} - User ID (e.g., 8)
+\end{itemize}
+
+\textbf{Request Body:}
+\begin{lstlisting}
+{
+  "quantity": 3
+}
+\end{lstlisting}
+
+\textbf{Expected Response (200 OK):}
+\begin{lstlisting}
+{
+    "id": 22,
+    "productId": 1,
+    "productImage": "/photos/iphone.jpeg",
+    "productName": "iPhone 14 128GB",
+    "quantity": 3,
+    "subtotal": 268703.70,
+    "unitPrice": 89567.90
+}
+\end{lstlisting}
+
+\vspace{0.5cm}
+
+% API 18: Remove from Cart
+\subsection{API 18: Remove Item from Cart}
+
+\begin{tcolorbox}[colback=deletecolor!10, colframe=deletecolor, title=DELETE]
+\textbf{Endpoint:} \texttt{http://localhost:8080/api/cart/items/1?userId=8}
+\end{tcolorbox}
+
+\textbf{Description:} Removes an item from the shopping cart.
+
+\textbf{Path Parameter:}
+\begin{itemize}
+    \item \texttt{itemId} - Cart Item ID (e.g., 1)
+\end{itemize}
+
+\textbf{Query Parameter:}
+\begin{itemize}
+    \item \texttt{userId} - User ID (e.g., 8)
+\end{itemize}
+
+\textbf{Request Body:} None required.
+
+\textbf{Expected Response (200 OK):}
+\begin{lstlisting}
+Item removed from cart
+\end{lstlisting}
+
+\newpage
+
+% ============================================
+% SECTION 5: ORDERS
+% ============================================
+\section{Orders APIs (4 Endpoints)}
+
+This section covers order management including checkout, viewing orders, and status updates.
+
+% API 19: Create Order
+\subsection{API 19: Create Order (Checkout)}
+
+\begin{tcolorbox}[colback=postcolor!10, colframe=postcolor, title=POST]
+\textbf{Endpoint:} \texttt{http://localhost:8080/api/orders?userId=1}
+\end{tcolorbox}
+
+\textbf{Description:} Creates a new order from the user's cart (checkout).
+
+\textbf{Query Parameter:}
+\begin{itemize}
+    \item \texttt{userId} - User ID (e.g., 1)
+\end{itemize}
+
+\textbf{Request Body:}
+\begin{lstlisting}
+{
+  "shippingAddress": "Flat 302, MG Road, blr - 411001",
+  "paymentMethod": "CARD"
+}
+\end{lstlisting}
+
+\textbf{Payment Methods Available:}
+\begin{itemize}
+    \item \texttt{CARD} - Credit/Debit Card
+    \item \texttt{UPI} - UPI Payment
+    \item \texttt{COD} - Cash on Delivery
+    \item \texttt{NET\_BANKING} - Net Banking
+\end{itemize}
+
+\textbf{Expected Response (201 Created):}
+\begin{lstlisting}
+{
+    "createdAt": "2025-12-10T05:08:05.640805Z",
+    "id": 6,
+    "items": [
+        {
+            "id": 11,
+            "productId": 1,
+            "productName": "iPhone 14 128GB",
+            "quantity": 5,
+            "subtotal": 447159.75,
+            "unitPrice": 89431.95
+        },
+        {
+            "id": 12,
+            "productId": 8,
+            "productName": "Ikigai: The Japanese Secret",
+            "quantity": 2,
+            "subtotal": 508.30,
+            "unitPrice": 254.15
+        }
+    ],
+    "orderNumber": "ORD-20251210103805",
+    "paymentMethod": "CARD",
+    "paymentStatus": "SUCCESS",
+    "shippingAddress": "Flat 302, MG Road, blr - 411001",
+    "status": "CONFIRMED",
+    "totalAmount": 447668.05
+}
+\end{lstlisting}
+
+\vspace{0.5cm}
+
+% API 20: Get User Orders
+\subsection{API 20: Get User Orders}
+
+\begin{tcolorbox}[colback=getcolor!10, colframe=getcolor, title=GET]
+\textbf{Endpoint:} \texttt{http://localhost:8080/api/orders?userId=1}
+\end{tcolorbox}
+
+\textbf{Description:} Retrieves all orders for a specific user.
+
+\textbf{Query Parameter:}
+\begin{itemize}
+    \item \texttt{userId} - User ID (e.g., 1)
+\end{itemize}
+
+\textbf{Request Body:} None required.
+
+\textbf{Expected Response (200 OK):}
+\begin{lstlisting}
+{
+    "content": [
+        {
+            "createdAt": "2025-12-10T05:08:05.640805Z",
+            "id": 6,
+            "items": [
+                {
+                    "id": 11,
+                    "productId": 1,
+                    "productName": "iPhone 14 128GB",
+                    "quantity": 5,
+                    "subtotal": 447159.75,
+                    "unitPrice": 89431.95
+                },
+                {
+                    "id": 12,
+                    "productId": 8,
+                    "productName": "Ikigai: The Japanese Secret",
+                    "quantity": 2,
+                    "subtotal": 508.30,
+                    "unitPrice": 254.15
+                }
+            ],
+            "orderNumber": "ORD-20251210103805",
+            "paymentMethod": "CARD",
+            "paymentStatus": "SUCCESS",
+            "shippingAddress": "Flat 302, MG Road, blr - 411001",
+            "status": "CONFIRMED",
+            "totalAmount": 447668.05
+        }
+    ],
+    "empty": false,
+    "first": true,
+    "last": true,
+    "number": 0,
+    "numberOfElements": 1,
+    "pageable": {
+        "offset": 0,
+        "pageNumber": 0,
+        "pageSize": 10,
+        "paged": true,
+        "sort": {
+            "empty": true,
+            "sorted": false,
+            "unsorted": true
+        },
+        "unpaged": false
+    },
+    "size": 10,
+    "sort": {
+        "empty": true,
+        "sorted": false,
+        "unsorted": true
+    },
+    "totalElements": 1,
+    "totalPages": 1
+}
+\end{lstlisting}
+
+\vspace{0.5cm}
+
+% API 21: Get Order by ID
+\subsection{API 21: Get Order by ID}
+
+\begin{tcolorbox}[colback=getcolor!10, colframe=getcolor, title=GET]
+\textbf{Endpoint:} \texttt{http://localhost:8080/api/orders/1?userId=1}
+\end{tcolorbox}
+
+\textbf{Description:} Retrieves details of a specific order.
+
+\textbf{Path Parameter:}
+\begin{itemize}
+    \item \texttt{orderId} - Order ID (e.g., 1)
+\end{itemize}
+
+\textbf{Query Parameter:}
+\begin{itemize}
+    \item \texttt{userId} - User ID (e.g., 1)
+\end{itemize}
+
+\textbf{Request Body:} None required.
+
+\textbf{Expected Response (200 OK):}
+\begin{lstlisting}
+{
+  "id": 1,
+  "orderNumber": "ORD-20241210-001",
+  "status": "PENDING",
+  "totalAmount": 178962.90,
+  "shippingAddress": "Flat 302, MG Road, Pune - 411001",
+  "paymentMethod": "CARD",
+  "paymentStatus": "PENDING",
+  "items": [...],
+  "createdAt": "2024-12-10T10:00:00"
+}
+\end{lstlisting}
+
+\vspace{0.5cm}
+
+% API 22: Update Order Status
+\subsection{API 22: Update Order Status (Admin)}
+
+\begin{tcolorbox}[colback=putcolor!10, colframe=putcolor, title=PUT]
+\textbf{Endpoint:} \texttt{http://localhost:8080/api/orders/3/status}
+\end{tcolorbox}
+
+\textbf{Description:} Updates the status of an order. \textit{Requires Admin privileges.}
+
+\textbf{Path Parameter:}
+\begin{itemize}
+    \item \texttt{orderId} - Order ID (e.g., 1)
+\end{itemize}
+
+\textbf{Request Body:}
+\begin{lstlisting}
+{
+  "status": "SHIPPED"
+}
+\end{lstlisting}
+
+\textbf{Order Status Flow:}
+\begin{center}
+\texttt{PENDING} $\rightarrow$ \texttt{CONFIRMED} $\rightarrow$ \texttt{SHIPPED} $\rightarrow$ \texttt{DELIVERED}\\[0.3cm]
+\textit{(Can also be set to \texttt{CANCELLED} at any point)}
+\end{center}
+
+\textbf{Expected Response (200 OK):}
+\begin{lstlisting}
+{
+    "createdAt": "2025-12-07T09:53:58.835850Z",
+    "id": 3,
+    "items": [
+        {
+            "id": 3,
+            "productId": 1,
+            "productName": "iPhone 14 128GB",
+            "quantity": 2,
+            "subtotal": 179135.80,
+            "unitPrice": 89567.90
+        },
+        {
+            "id": 4,
+            "productId": 2,
+            "productName": "Samsung Galaxy M33 5G",
+            "quantity": 1,
+            "subtotal": 18052.94,
+            "unitPrice": 18052.94
+        },
+        {
+            "id": 5,
+            "productId": 3,
+            "productName": "Dell Inspiron 15 Laptop",
+            "quantity": 1,
+            "subtotal": 57525.94,
+            "unitPrice": 57525.94
+        }
+    ],
+    "orderNumber": "ORD-20251207152358",
+    "paymentMethod": "COD",
+    "paymentStatus": "SUCCESS",
+    "shippingAddress": "BLR",
+    "status": "SHIPPED",
+    "totalAmount": 254714.68
+}
+\end{lstlisting}
+
+\newpage
+
+% ============================================
+% SECTION 6: REVIEWS
+% ============================================
+\section{Reviews APIs (3 Endpoints)}
+
+This section covers product review functionality including viewing, adding reviews, and average ratings.
+
+% API 23: Get Reviews
+\subsection{API 23: Get Product Reviews}
+
+\begin{tcolorbox}[colback=getcolor!10, colframe=getcolor, title=GET]
+\textbf{Endpoint:} \texttt{http://localhost:8080/api/products/1/reviews}
+\end{tcolorbox}
+
+\textbf{Description:} Retrieves all reviews for a specific product.
+
+\textbf{Path Parameter:}
+\begin{itemize}
+    \item \texttt{productId} - Product ID (e.g., 1)
+\end{itemize}
+
+\textbf{Request Body:} None required.
+
+\textbf{Expected Response (200 OK):}
+\begin{lstlisting}
+[
+    {
+        "comment": "Great product!",
+        "createdAt": "2025-12-07T09:17:17.880937Z",
+        "id": 2,
+        "productId": 1,
+        "productName": "iPhone 14 128GB",
+        "rating": 5,
+        "userId": 7,
+        "userName": "Test Admin"
+    }
+]
+\end{lstlisting}
+
+\vspace{0.5cm}
+
+% API 24: Add Review
+\subsection{API 24: Add Review}
+
+\begin{tcolorbox}[colback=postcolor!10, colframe=postcolor, title=POST]
+\textbf{Endpoint:} \texttt{http://localhost:8080/api/products/11/reviews?userId=4}
+\end{tcolorbox}
+
+\textbf{Description:} Adds a new review for a product.
+
+\textbf{Path Parameter:}
+\begin{itemize}
+    \item \texttt{productId} - Product ID (e.g., 11)
+\end{itemize}
+
+\textbf{Query Parameter:}
+\begin{itemize}
+    \item \texttt{userId} - User ID (e.g., 4)
+\end{itemize}
+
+\textbf{Request Body:}
+\begin{lstlisting}
+{
+  "productId": 1,
+  "rating": 5,
+  "comment": "Amazing product! Highly recommended."
+}
+\end{lstlisting}
+
+\textbf{Rating Scale:} 1-5 stars
+
+\textbf{Expected Response (201 Created):}
+\begin{lstlisting}
+{
+    "comment": "Amazing product! Highly recommended.",
+    "createdAt": "2025-12-10T05:09:12.767098Z",
+    "id": 5,
+    "productId": 3,
+    "productName": "Dell Inspiron 15 Laptop",
+    "rating": 5,
+    "userId": 4,
+    "userName": "Sneha Singh"
+}
+\end{lstlisting}
+
+\vspace{0.5cm}
+
+% API 25: Get Average
+\subsection{API 25: Get Average Rating}
+
+\begin{tcolorbox}[colback=getcolor!10, colframe=getcolor, title=GET]
+\textbf{Endpoint:} \texttt{http://localhost:8080/api/products/1/reviews/average}
+\end{tcolorbox}
+
+\textbf{Description:} Retrieves the average rating for a specific product.
+
+\textbf{Path Parameter:}
+\begin{itemize}
+    \item \texttt{productId} - Product ID (e.g., 1)
+\end{itemize}
+
+\textbf{Request Body:} None required.
+
+\textbf{Expected Response (200 OK):}
+\begin{lstlisting}
+5.0
+\end{lstlisting}
+
+\newpage
+
+% ============================================
+% SECTION 7: USERS
+% ============================================
+\section{Users APIs (5 Endpoints)}
+
+This section covers user profile management including viewing, updating profiles, password changes, and account deletion.
+
+% API 26: Get Profile
+\subsection{API 26: Get User Profile}
+
+\begin{tcolorbox}[colback=getcolor!10, colframe=getcolor, title=GET]
+\textbf{Endpoint:} \texttt{http://localhost:8080/api/users/me?userId=1}
+\end{tcolorbox}
+
+\textbf{Description:} Retrieves the profile of the authenticated user.
+
+\textbf{Query Parameter:}
+\begin{itemize}
+    \item \texttt{userId} - User ID (e.g., 1)
+\end{itemize}
+
+\textbf{Request Body:} None required.
+
+\textbf{Expected Response (200 OK):}
+\begin{lstlisting}
+{
+    "address": null,
+    "email": "raj.sharma@gmail.com",
+    "firstName": "Raj",
+    "id": 1,
+    "lastName": "Sharma",
+    "name": "Raj Sharma",
+    "phone": "9876543210",
+    "phoneNumber": "9876543210",
+    "role": "CUSTOMER"
+}
+\end{lstlisting}
+
+\vspace{0.5cm}
+
+% API 27: Update Profile
+\subsection{API 27: Update Profile}
+
+\begin{tcolorbox}[colback=putcolor!10, colframe=putcolor, title=PUT]
+\textbf{Endpoint:} \texttt{http://localhost:8080/api/users/me?userId=1}
+\end{tcolorbox}
+
+\textbf{Description:} Updates the user's profile information.
+
+\textbf{Query Parameter:}
+\begin{itemize}
+    \item \texttt{userId} - User ID (e.g., 1)
+\end{itemize}
+
+\textbf{Request Body:}
+\begin{lstlisting}
+{
+  "firstName": "Raj",
+  "lastName": "Sharma",
+  "phone": "9876543210"
+}
+\end{lstlisting}
+
+\textbf{Expected Response (200 OK):}
+\begin{lstlisting}
+{
+    "address": null,
+    "email": "raj.sharma@gmail.com",
+    "firstName": "Raj",
+    "id": 1,
+    "lastName": "Sharma",
+    "name": "Raj Sharma",
+    "phone": "9876543210",
+    "phoneNumber": "9876543210",
+    "role": "CUSTOMER"
+}
+\end{lstlisting}
+
+\vspace{0.5cm}
+
+% API 28: Get All Users
+\subsection{API 28: Get All Users (Admin)}
+
+\begin{tcolorbox}[colback=getcolor!10, colframe=getcolor, title=GET]
+\textbf{Endpoint:} \texttt{http://localhost:8080/api/users}
+\end{tcolorbox}
+
+\textbf{Description:} Retrieves all registered users. \textit{Requires Admin privileges.}
+
+\textbf{Request Body:} None required.
+
+\textbf{Expected Response (200 OK):}
+\begin{lstlisting}
+[
+    {
+        "address": null,
+        "email": "raj.sharma@gmail.com",
+        "firstName": "Raj",
+        "id": 1,
+        "lastName": "Sharma",
+        "name": "Raj Sharma",
+        "phone": "9876543210",
+        "phoneNumber": "9876543210",
+        "role": "CUSTOMER"
+    },
+    {
+        "address": null,
+        "email": "amit.kumar@gmail.com",
+        "firstName": "Amit",
+        "id": 3,
+        "lastName": "Kumar",
+        "name": "Amit Kumar",
+        "phone": "9876543212",
+        "phoneNumber": "9876543212",
+        "role": "CUSTOMER"
+    },
+    {
+        "address": null,
+        "email": "sneha.singh@gmail.com",
+        "firstName": "Sneha",
+        "id": 4,
+        "lastName": "Singh",
+        "name": "Sneha Singh",
+        "phone": "9876543213",
+        "phoneNumber": "9876543213",
+        "role": "CUSTOMER"
+    },
+    {
+        "address": null,
+        "email": "raj.sharma1@gmail.com",
+        "firstName": "Raj",
+        "id": 5,
+        "lastName": "Sharma",
+        "name": "Raj Sharma",
+        "phone": "9876543210",
+        "phoneNumber": "9876543210",
+        "role": "CUSTOMER"
+    },
+    {
+        "address": null,
+        "email": "priya.patel1@gmail.com",
+        "firstName": "Priya",
+        "id": 6,
+        "lastName": "Patel",
+        "name": "Priya Patel",
+        "phone": "9876543211",
+        "phoneNumber": "9876543211",
+        "role": "CUSTOMER"
+    },
+    {
+        "address": null,
+        "email": "test123@gmail.com",
+        "firstName": "Test",
+        "id": 7,
+        "lastName": "Admin",
+        "name": "Test Admin",
+        "phone": "1234567890",
+        "phoneNumber": "1234567890",
+        "role": "ADMIN"
+    },
+    {
+        "address": null,
+        "email": "test@example.com",
+        "firstName": "Test",
+        "id": 8,
+        "lastName": "User",
+        "name": "Test User",
+        "phone": "09876543211234567890",
+        "phoneNumber": "09876543211234567890",
+        "role": "CUSTOMER"
+    },
+    {
+        "address": null,
+        "email": "testapi@test.com",
+        "firstName": "API",
+        "id": 9,
+        "lastName": "Test",
+        "name": "API Test",
+        "phone": null,
+        "phoneNumber": null,
+        "role": "CUSTOMER"
+    },
+    {
+        "address": null,
+        "email": "test1234@gmail.com",
+        "firstName": "Aryan",
+        "id": 10,
+        "lastName": "",
+        "name": "Aryan ",
+        "phone": "1234567890",
+        "phoneNumber": "1234567890",
+        "role": "CUSTOMER"
+    },
+    {
+        "address": null,
+        "email": "testing@gmail.com",
+        "firstName": "Test",
+        "id": 11,
+        "lastName": "",
+        "name": "Test ",
+        "phone": "0987654321",
+        "phoneNumber": "0987654321",
+        "role": "CUSTOMER"
+    },
+    {
+        "address": null,
+        "email": "raj.shamani@gmail.com",
+        "firstName": "Raj",
+        "id": 12,
+        "lastName": "Shamani",
+        "name": "Raj Shamani",
+        "phone": "9876543210",
+        "phoneNumber": "9876543210",
+        "role": "CUSTOMER"
+    }
+]
+\end{lstlisting}
+
+\vspace{0.5cm}
+
+% API 29: Change Password
+\subsection{API 29: Change Password}
+
+\begin{tcolorbox}[colback=putcolor!10, colframe=putcolor, title=PUT]
+\textbf{Endpoint:} \texttt{http://localhost:8080/api/users/1/password}
+\end{tcolorbox}
+
+\textbf{Description:} Changes the user's password.
+
+\textbf{Path Parameter:}
+\begin{itemize}
+    \item \texttt{userId} - User ID (e.g., 1)
+\end{itemize}
+
+\textbf{Request Body:}
+\begin{lstlisting}
+{
+  "currentPassword": "password123",
+  "newPassword": "newpassword456"
+}
+\end{lstlisting}
+
+\textbf{Expected Response (200 OK):}
+\begin{lstlisting}
+Password changed successfully
+\end{lstlisting}
+
+\vspace{0.5cm}
+
+% API 30: Delete User
+\subsection{API 30: Delete User}
+
+\begin{tcolorbox}[colback=deletecolor!10, colframe=deletecolor, title=DELETE]
+\textbf{Endpoint:} \texttt{http://localhost:8080/api/users/1}
+\end{tcolorbox}
+
+\textbf{Description:} Deletes a user account from the system.
+
+\textbf{Path Parameter:}
+\begin{itemize}
+    \item \texttt{userId} - User ID (e.g., 1)
+\end{itemize}
+
+\textbf{Request Body:} None required.
+
+\textbf{Expected Response (200 OK):}
+\begin{lstlisting}
+User deleted successfully
+\end{lstlisting}
+
+\newpage
+
+% ============================================
+% APPENDIX: RESPONSE CODES
+% ============================================
+\section{Appendix: HTTP Response Codes}
+
+\begin{table}[H]
+\centering
+\caption{Standard HTTP Response Codes}
+\begin{tabular}{|c|l|p{8cm}|}
+\hline
+\textbf{Code} & \textbf{Status} & \textbf{Description} \\
+\hline
+200 & OK & Successful GET, PUT, or DELETE request \\
+\hline
+201 & Created & Successful POST request (resource created) \\
+\hline
+400 & Bad Request & Missing request body or validation error \\
+\hline
+401 & Unauthorized & Invalid or missing authentication token \\
+\hline
+403 & Forbidden & Insufficient permissions (Admin-only endpoint) \\
+\hline
+404 & Not Found & Requested resource does not exist \\
+\hline
+500 & Internal Server Error & Server-side error occurred \\
+\hline
+\end{tabular}
+\end{table}
+
+% ============================================
+% APPENDIX: API SUMMARY TABLE
+% ============================================
+\section{Appendix: Complete API Summary}
+
+\begin{longtable}{|c|l|l|p{5cm}|}
+\hline
+\textbf{No.} & \textbf{API Name} & \textbf{Method} & \textbf{Endpoint} \\
+\hline
+\endfirsthead
+\hline
+\textbf{No.} & \textbf{API Name} & \textbf{Method} & \textbf{Endpoint} \\
+\hline
+\endhead
+1 & Register New User & \textcolor{postcolor}{\textbf{POST}} & /api/auth/register \\
+\hline
+2 & Login User & \textcolor{postcolor}{\textbf{POST}} & /api/auth/login \\
+\hline
+3 & Get All Categories & \textcolor{getcolor}{\textbf{GET}} & /api/categories \\
+\hline
+4 & Create Category & \textcolor{postcolor}{\textbf{POST}} & /api/categories \\
+\hline
+5 & Get Category by ID & \textcolor{getcolor}{\textbf{GET}} & /api/categories/\{id\} \\
+\hline
+6 & Update Category & \textcolor{putcolor}{\textbf{PUT}} & /api/categories/\{id\} \\
+\hline
+7 & Delete Category & \textcolor{deletecolor}{\textbf{DELETE}} & /api/categories/\{id\} \\
+\hline
+8 & Get All Products & \textcolor{getcolor}{\textbf{GET}} & /api/products \\
+\hline
+9 & Get Product by ID & \textcolor{getcolor}{\textbf{GET}} & /api/products/\{id\} \\
+\hline
+10 & Create Product & \textcolor{postcolor}{\textbf{POST}} & /api/products \\
+\hline
+11 & Update Product & \textcolor{putcolor}{\textbf{PUT}} & /api/products/\{id\} \\
+\hline
+12 & Delete Product & \textcolor{deletecolor}{\textbf{DELETE}} & /api/products/\{id\} \\
+\hline
+13 & Search Products & \textcolor{getcolor}{\textbf{GET}} & /api/products/search \\
+\hline
+14 & Products by Category & \textcolor{getcolor}{\textbf{GET}} & /api/products/category/\{id\} \\
+\hline
+15 & View Cart & \textcolor{getcolor}{\textbf{GET}} & /api/cart \\
+\hline
+16 & Add to Cart & \textcolor{postcolor}{\textbf{POST}} & /api/cart/items \\
+\hline
+17 & Update Cart Item & \textcolor{putcolor}{\textbf{PUT}} & /api/cart/items/\{id\} \\
+\hline
+18 & Remove from Cart & \textcolor{deletecolor}{\textbf{DELETE}} & /api/cart/items/\{id\} \\
+\hline
+19 & Create Order & \textcolor{postcolor}{\textbf{POST}} & /api/orders \\
+\hline
+20 & Get User Orders & \textcolor{getcolor}{\textbf{GET}} & /api/orders \\
+\hline
+21 & Get Order by ID & \textcolor{getcolor}{\textbf{GET}} & /api/orders/\{id\} \\
+\hline
+22 & Update Order Status & \textcolor{putcolor}{\textbf{PUT}} & /api/orders/\{id\}/status \\
+\hline
+23 & Get Product Reviews & \textcolor{getcolor}{\textbf{GET}} & /api/products/\{id\}/reviews \\
+\hline
+24 & Add Review & \textcolor{postcolor}{\textbf{POST}} & /api/products/\{id\}/reviews \\
+\hline
+25 & Get Average Rating & \textcolor{getcolor}{\textbf{GET}} & /api/products/\{id\}/reviews/average \\
+\hline
+26 & Get User Profile & \textcolor{getcolor}{\textbf{GET}} & /api/users/me \\
+\hline
+27 & Update Profile & \textcolor{putcolor}{\textbf{PUT}} & /api/users/me \\
+\hline
+28 & Get All Users & \textcolor{getcolor}{\textbf{GET}} & /api/users \\
+\hline
+29 & Change Password & \textcolor{putcolor}{\textbf{PUT}} & /api/users/\{id\}/password \\
+\hline
+30 & Delete User & \textcolor{deletecolor}{\textbf{DELETE}} & /api/users/\{id\} \\
+\hline
+\end{longtable}
+
+% ============================================
+% APPENDIX: METHOD DISTRIBUTION
+% ============================================
+\section{Appendix: API Method Distribution}
+
+\begin{table}[H]
+\centering
+\caption{HTTP Methods Distribution}
+\begin{tabular}{|l|c|c|}
+\hline
+\textbf{HTTP Method} & \textbf{Count} & \textbf{Percentage} \\
+\hline
+\textcolor{getcolor}{\textbf{GET}} & 14 & 46.7\% \\
+\hline
+\textcolor{postcolor}{\textbf{POST}} & 8 & 26.7\% \\
+\hline
+\textcolor{putcolor}{\textbf{PUT}} & 5 & 16.7\% \\
+\hline
+\textcolor{deletecolor}{\textbf{DELETE}} & 3 & 10.0\% \\
+\hline
+\textbf{Total} & \textbf{30} & \textbf{100\%} \\
+\hline
+\end{tabular}
+\end{table}
+
+% ============================================
+% TESTING TIPS
+% ============================================
+\section{Appendix: Postman Testing Tips}
+
+\subsection{Setting Up Requests}
+
+\begin{enumerate}
+    \item \textbf{For POST/PUT requests:}
+    \begin{itemize}
+        \item Go to the \textbf{Body} tab
+        \item Select \textbf{raw}
+        \item Choose \textbf{JSON} from the dropdown
+        \item Paste the JSON body
+    \end{itemize}
+    
+    \item \textbf{Replace placeholders:}
+    \begin{itemize}
+        \item \texttt{userId=1} $\rightarrow$ Use actual user ID from registration
+        \item \texttt{/products/1} $\rightarrow$ Use actual product ID
+    \end{itemize}
+\end{enumerate}
+
+\subsection{Recommended Test Flow}
+
+\begin{enumerate}
+    \item Register a new user (obtain userId)
+    \item Login with the registered credentials
+    \item Create categories (Admin)
+    \item Create products (Admin)
+    \item Add items to cart
+    \item Complete checkout (create order)
+    \item Add product reviews
+    \item View orders and order details
+\end{enumerate}
+
+\end{document}
