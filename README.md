@@ -1,6 +1,6 @@
 <div align="center">
 
-# 🛒 ApniDukaan
+# ApniDukaan
 
 ### *Your Store. Your Way.*
 
@@ -19,29 +19,29 @@
 
 <br/>
 
-[🚀 Quick Start](#-quick-start) • [📡 API Docs](#-api-reference) • [🏗️ Architecture](#%EF%B8%8F-architecture) • [👥 Team](#-team)
+[Quick Start](#quick-start) • [API Docs](#api-reference) • [Architecture](#architecture) • [Team](#team)
 
 </div>
 
 ---
 
-## 📖 About The Project
+## About The Project
 
 **ApniDukaan** (meaning *"Your Store"* in Hindi) is a complete e-commerce solution developed as a college project by Team Cold Blooded. It demonstrates enterprise-level software engineering practices including:
 
 - **Stateless REST API** secured with JSON Web Tokens
 - **Role-Based Access Control** (Customer vs Admin) enforced at the security filter level
 - **Pessimistic Database Locking** on product stock to prevent race conditions during concurrent checkouts
-- **Layered Architecture** with clean separation: Controllers → Services → Repositories → Entities
+- **Layered Architecture** with clean separation: Controllers -> Services -> Repositories -> Entities
 - **Global Exception Handling** with structured JSON error responses across all endpoints
 - **Data Integrity** via snapshots of product price/name stored in orders (so history is preserved even if products change)
 
 ---
 
-## ✨ Feature Showcase
+## Feature Showcase
 
 <details open>
-<summary><strong>🧑‍💼 Customer Experience</strong></summary>
+<summary><strong>Customer Experience</strong></summary>
 
 | Feature | Details |
 |---------|---------|
@@ -50,14 +50,14 @@
 | **Product Details** | View price (with tax & discount applied via `getFinalPrice()`), stock status, category, and star ratings |
 | **Shopping Cart** | Add items with stock validation, update quantities, remove items. Cart persists in DB per user |
 | **Checkout & Orders** | Place orders from cart contents. Stock is deducted using pessimistic locking. Orders get a unique order number |
-| **Order History** | View all past orders with items, prices, status (Placed → Confirmed → Shipped → Delivered) |
-| **Reviews & Ratings** | Leave one review per product (1–5 stars + comment). View average ratings |
+| **Order History** | View all past orders with items, prices, status (Placed -> Confirmed -> Shipped -> Delivered) |
+| **Reviews & Ratings** | Leave one review per product (1-5 stars + comment). View average ratings |
 | **Profile Management** | Update first name, last name, phone. Change password with current-password verification via BCrypt |
 
 </details>
 
 <details>
-<summary><strong>🔧 Admin Dashboard</strong></summary>
+<summary><strong>Admin Dashboard</strong></summary>
 
 | Feature | Details |
 |---------|---------|
@@ -70,7 +70,7 @@
 </details>
 
 <details>
-<summary><strong>🔒 Security Architecture</strong></summary>
+<summary><strong>Security Architecture</strong></summary>
 
 | Layer | Implementation |
 |-------|---------------|
@@ -85,7 +85,7 @@
 
 ---
 
-## 🏗️ Architecture
+## Architecture
 
 ```
 ┌──────────────────────────────────────────────────────────────────────┐
@@ -104,7 +104,7 @@
 │                                                                      │
 │   ┌───────────────────────────────────────────────────────────────┐  │
 │   │                   Security Filter Chain                       │  │
-│   │   JwtAuthenticationFilter → validates token → sets context   │  │
+│   │   JwtAuthenticationFilter -> validates token -> sets context   │  │
 │   └───────────────────────────┬───────────────────────────────────┘  │
 │                               │                                      │
 │   ┌─────────┬──────────┬──────┴──┬──────────┬──────────┬──────────┐ │
@@ -135,7 +135,7 @@
 
 ---
 
-## 🗄️ Database Schema
+## Database Schema
 
 ```
 users                           products
@@ -146,15 +146,15 @@ email (UNIQUE)                  base_price, tax, discount
 final_price (computed)          final_price (computed)
 password_hash (BCrypt)          stock
 phone                           image_url
-role (CUSTOMER|ADMIN)           category_id (FK → categories)
+role (CUSTOMER|ADMIN)           category_id (FK -> categories)
 created_at, updated_at          created_at, updated_at
 
 categories                      reviews
 ──────────────────              ──────────────────────────────
 id (PK)                         id (PK)
-name (UNIQUE)                   product_id (FK → products)
-slug (UNIQUE)                   user_id    (FK → users)
-description                     rating (1–5)
+name (UNIQUE)                   product_id (FK -> products)
+slug (UNIQUE)                   user_id    (FK -> users)
+description                     rating (1-5)
                                 comment
                                 created_at
 
@@ -173,7 +173,7 @@ user_id    cart_id (FK)         user_id     order_id (FK)
 
 ---
 
-## 🛠️ Tech Stack
+## Tech Stack
 
 | Category | Technology | Version | Purpose |
 |----------|-----------|---------|---------|
@@ -184,34 +184,34 @@ user_id    cart_id (FK)         user_id     order_id (FK)
 | Tokens | JJWT (jwtk) | 0.11.5 | JWT creation, signing, and validation |
 | ORM | Spring Data JPA + Hibernate | 3.x | Database abstraction and query generation |
 | Database | MySQL | 8.0 | Persistent relational data store |
-| Password | BCryptPasswordEncoder | — | Salted password hashing |
+| Password | BCryptPasswordEncoder | - | Salted password hashing |
 | Build | Apache Maven | 3.9.x | Dependency management and build lifecycle |
 | Frontend | HTML5 + CSS3 + Vanilla JS | ES6+ | No-framework lightweight UI |
-| Testing | JUnit 5 + Spring Test | — | Unit and integration tests |
-| API Testing | Postman | — | Manual API exploration and testing |
+| Testing | JUnit 5 + Spring Test | - | Unit and integration tests |
+| API Testing | Postman | - | Manual API exploration and testing |
 
 ---
 
-## 🚀 Quick Start
+## Quick Start
 
 ### Prerequisites
 
 Make sure you have the following installed:
 
 ```
-✅ Java 21+       →  java -version
-✅ MySQL 8.0+     →  mysql --version
-✅ Maven 3.8+     →  mvn -version   (or use included ./mvnw)
+- Java 21+       ->  java -version
+- MySQL 8.0+     ->  mysql --version
+- Maven 3.8+     ->  mvn -version   (or use included ./mvnw)
 ```
 
-### Step 1 — Clone the Repository
+### Step 1 - Clone the Repository
 
 ```bash
 git clone https://github.com/tdixit547/ApniDukaan.git
 cd ApniDukaan
 ```
 
-### Step 2 — Create the Database
+### Step 2 - Create the Database
 
 Log into MySQL and run:
 
@@ -219,22 +219,22 @@ Log into MySQL and run:
 CREATE DATABASE ecommerce_db CHARACTER SET utf8mb4 COLLATE utf8mb4_unicode_ci;
 ```
 
-### Step 3 — Configure the Application
+### Step 3 - Configure the Application
 
 Edit `backend/src/main/resources/application.properties`:
 
 ```properties
-# Database — update these for your MySQL setup
+# Database - update these for your MySQL setup
 spring.datasource.url=jdbc:mysql://localhost:3306/ecommerce_db?createDatabaseIfNotExist=true&useSSL=false&allowPublicKeyRetrieval=true
 spring.datasource.username=root
 spring.datasource.password=YOUR_MYSQL_PASSWORD
 
-# JWT Secret — change this to any long random string in production
+# JWT Secret - change this to any long random string in production
 app.jwt.secret=your-super-secret-key-change-this-in-production-min-256-bits
 app.jwt.expirationMs=86400000
 ```
 
-### Step 4 — Run the Backend
+### Step 4 - Run the Backend
 
 ```bash
 cd backend
@@ -243,14 +243,14 @@ cd backend
 
 > On Windows: `.\mvnw.cmd spring-boot:run`
 
-Watch the startup logs — you'll see:
+Watch the startup logs - you'll see:
 ```
 Started PrototypeApplication in 3.2 seconds
 DataSeeder: Seeding 5 categories and 15 products...
 DataSeeder: Sample data loaded successfully!
 ```
 
-### Step 5 — Open the App
+### Step 5 - Open the App
 
 Open your browser and visit:
 
@@ -268,17 +268,17 @@ Password: admin123
 
 ---
 
-## 📡 API Reference
+## API Reference
 
 All API endpoints are prefixed with `/api`. Protected routes require:
 ```
 Authorization: Bearer <your-jwt-token>
 ```
 
-### 🔐 Authentication
+### Authentication
 
 <details>
-<summary><strong>POST /api/auth/register</strong> — Register a new user</summary>
+<summary><strong>POST /api/auth/register</strong> - Register a new user</summary>
 
 **Request Body:**
 ```json
@@ -291,7 +291,7 @@ Authorization: Bearer <your-jwt-token>
 }
 ```
 
-**Response `201 Created`:**
+**Response 201 Created:**
 ```json
 {
   "token": "eyJhbGciOiJIUzI1NiJ9...",
@@ -308,7 +308,7 @@ Authorization: Bearer <your-jwt-token>
 </details>
 
 <details>
-<summary><strong>POST /api/auth/login</strong> — Login and get JWT</summary>
+<summary><strong>POST /api/auth/login</strong> - Login and get JWT</summary>
 
 **Request Body:**
 ```json
@@ -318,7 +318,7 @@ Authorization: Bearer <your-jwt-token>
 }
 ```
 
-**Response `200 OK`:**
+**Response 200 OK:**
 ```json
 {
   "token": "eyJhbGciOiJIUzI1NiJ9...",
@@ -331,18 +331,18 @@ Authorization: Bearer <your-jwt-token>
 
 ---
 
-### 📦 Products
+### Products
 
 | Method | Endpoint | Auth | Description |
 |--------|----------|------|-------------|
-| `GET` | `/api/products?page=0&size=12` | Public | Paginated product list |
-| `GET` | `/api/products/{id}` | Public | Single product details |
-| `GET` | `/api/products/search?query=laptop` | Public | Keyword search |
-| `GET` | `/api/products/category/{categoryId}` | Public | Filter by category |
-| `GET` | `/api/products/featured` | Public | Featured/discounted products |
-| `POST` | `/api/products` | 🔒 Admin | Create new product |
-| `PUT` | `/api/products/{id}` | 🔒 Admin | Update product details |
-| `DELETE` | `/api/products/{id}` | 🔒 Admin | Delete product |
+| GET | `/api/products?page=0&size=12` | Public | Paginated product list |
+| GET | `/api/products/{id}` | Public | Single product details |
+| GET | `/api/products/search?query=laptop` | Public | Keyword search |
+| GET | `/api/products/category/{categoryId}` | Public | Filter by category |
+| GET | `/api/products/featured` | Public | Featured/discounted products |
+| POST | `/api/products` | Admin | Create new product |
+| PUT | `/api/products/{id}` | Admin | Update product details |
+| DELETE | `/api/products/{id}` | Admin | Delete product |
 
 **Sample Product Response:**
 ```json
@@ -364,28 +364,28 @@ Authorization: Bearer <your-jwt-token>
 
 ---
 
-### 🗂️ Categories
+### Categories
 
 | Method | Endpoint | Auth | Description |
 |--------|----------|------|-------------|
-| `GET` | `/api/categories` | Public | All categories |
-| `GET` | `/api/categories/{id}` | Public | Single category |
-| `GET` | `/api/categories/slug/{slug}` | Public | Lookup by URL slug |
-| `POST` | `/api/categories` | 🔒 Admin | Create category |
-| `PUT` | `/api/categories/{id}` | 🔒 Admin | Update category |
-| `DELETE` | `/api/categories/{id}` | 🔒 Admin | Delete category |
+| GET | `/api/categories` | Public | All categories |
+| GET | `/api/categories/{id}` | Public | Single category |
+| GET | `/api/categories/slug/{slug}` | Public | Lookup by URL slug |
+| POST | `/api/categories` | Admin | Create category |
+| PUT | `/api/categories/{id}` | Admin | Update category |
+| DELETE | `/api/categories/{id}` | Admin | Delete category |
 
 ---
 
-### 🛒 Cart
+### Cart
 
 | Method | Endpoint | Auth | Description |
 |--------|----------|------|-------------|
-| `GET` | `/api/cart?userId={id}` | 🔒 Bearer | Get user's cart with totals |
-| `POST` | `/api/cart/items?userId={id}` | 🔒 Bearer | Add product to cart |
-| `PUT` | `/api/cart/items/{itemId}?userId={id}` | 🔒 Bearer | Update item quantity |
-| `DELETE` | `/api/cart/items/{itemId}?userId={id}` | 🔒 Bearer | Remove item from cart |
-| `DELETE` | `/api/cart/clear?userId={id}` | 🔒 Bearer | Empty the cart |
+| GET | `/api/cart?userId={id}` | Bearer | Get user's cart with totals |
+| POST | `/api/cart/items?userId={id}` | Bearer | Add product to cart |
+| PUT | `/api/cart/items/{itemId}?userId={id}` | Bearer | Update item quantity |
+| DELETE | `/api/cart/items/{itemId}?userId={id}` | Bearer | Remove item from cart |
+| DELETE | `/api/cart/clear?userId={id}` | Bearer | Empty the cart |
 
 **Add to Cart Request:**
 ```json
@@ -397,15 +397,15 @@ Authorization: Bearer <your-jwt-token>
 
 ---
 
-### 📋 Orders
+### Orders
 
 | Method | Endpoint | Auth | Description |
 |--------|----------|------|-------------|
-| `POST` | `/api/orders?userId={id}` | 🔒 Bearer | Place order from cart |
-| `GET` | `/api/orders?userId={id}` | 🔒 Bearer | User's order history |
-| `GET` | `/api/orders/{id}?userId={id}` | 🔒 Bearer | Order details with items |
-| `GET` | `/api/orders/all` | 🔒 Admin | All orders in system |
-| `PUT` | `/api/orders/{id}/status` | 🔒 Admin | Update fulfillment status |
+| POST | `/api/orders?userId={id}` | Bearer | Place order from cart |
+| GET | `/api/orders?userId={id}` | Bearer | User's order history |
+| GET | `/api/orders/{id}?userId={id}` | Bearer | Order details with items |
+| GET | `/api/orders/all` | Admin | All orders in system |
+| PUT | `/api/orders/{id}/status` | Admin | Update fulfillment status |
 
 **Place Order Request:**
 ```json
@@ -417,37 +417,37 @@ Authorization: Bearer <your-jwt-token>
 
 **Order Status Flow:**
 ```
-PLACED → CONFIRMED → SHIPPED → DELIVERED
-                ↘
-              CANCELLED
+PLACED -> CONFIRMED -> SHIPPED -> DELIVERED
+                \
+                 -> CANCELLED
 ```
 
 ---
 
-### ⭐ Reviews
+### Reviews
 
 | Method | Endpoint | Auth | Description |
 |--------|----------|------|-------------|
-| `GET` | `/api/products/{id}/reviews` | Public | All reviews for a product |
-| `GET` | `/api/products/{id}/reviews/average` | Public | Average star rating |
-| `POST` | `/api/products/{id}/reviews?userId={id}` | 🔒 Bearer | Submit review (1 per user) |
-| `DELETE` | `/api/products/{id}/reviews/{reviewId}` | 🔒 Admin | Delete inappropriate review |
+| GET | `/api/products/{id}/reviews` | Public | All reviews for a product |
+| GET | `/api/products/{id}/reviews/average` | Public | Average star rating |
+| POST | `/api/products/{id}/reviews?userId={id}` | Bearer | Submit review (1 per user) |
+| DELETE | `/api/products/{id}/reviews/{reviewId}` | Admin | Delete inappropriate review |
 
 ---
 
-### 👤 Users
+### Users
 
 | Method | Endpoint | Auth | Description |
 |--------|----------|------|-------------|
-| `GET` | `/api/users/me?userId={id}` | 🔒 Bearer | Get own profile |
-| `PUT` | `/api/users/me?userId={id}` | 🔒 Bearer | Update profile (name, phone) |
-| `PUT` | `/api/users/{id}/password` | 🔒 Bearer | Change password |
-| `GET` | `/api/users` | 🔒 Admin | All registered users |
-| `DELETE` | `/api/users/{id}` | 🔒 Admin | Delete user account |
+| GET | `/api/users/me?userId={id}` | Bearer | Get own profile |
+| PUT | `/api/users/me?userId={id}` | Bearer | Update profile (name, phone) |
+| PUT | `/api/users/{id}/password` | Bearer | Change password |
+| GET | `/api/users` | Admin | All registered users |
+| DELETE | `/api/users/{id}` | Admin | Delete user account |
 
 ---
 
-### ❌ Error Responses
+### Error Responses
 
 All errors return a consistent JSON structure:
 
@@ -462,21 +462,21 @@ All errors return a consistent JSON structure:
 
 | HTTP Code | Meaning |
 |-----------|---------|
-| `400` | Bad request / validation error |
-| `401` | Missing or invalid JWT token |
-| `403` | Insufficient role (e.g. customer accessing admin route) |
-| `404` | Resource not found |
-| `409` | Conflict (e.g. insufficient stock, duplicate review) |
-| `500` | Internal server error |
+| 400 | Bad request / validation error |
+| 401 | Missing or invalid JWT token |
+| 403 | Insufficient role (e.g. customer accessing admin route) |
+| 404 | Resource not found |
+| 409 | Conflict (e.g. insufficient stock, duplicate review) |
+| 500 | Internal server error |
 
 ---
 
-## 📁 Project Structure
+## Project Structure
 
 ```
 ApniDukaan/
 │
-├── 📂 backend/                              # Spring Boot application
+├── backend/                              # Spring Boot application
 │   ├── pom.xml                              # Maven dependencies
 │   ├── mvnw / mvnw.cmd                      # Maven wrapper scripts
 │   └── src/
@@ -512,7 +512,7 @@ ApniDukaan/
 │       │       └── static/                          # Frontend served by Spring
 │       └── test/                                    # JUnit 5 tests
 │
-├── 📂 frontend/                             # Standalone frontend source
+├── frontend/                             # Standalone frontend source
 │   ├── index.html                           # Product shop homepage
 │   ├── admin.html                           # Admin dashboard
 │   ├── orders.html                          # Order history page
@@ -523,21 +523,21 @@ ApniDukaan/
 │   ├── profile.js                           # Profile page logic
 │   └── style.css / admin.css / orders.css   # Page styles
 │
-├── 📂 sql/                                  # Database scripts
+├── sql/                                  # Database scripts
 │   ├── sample_data.sql                      # Insert sample products
 │   └── populate_database.sh                 # Shell helper script
 │
-├── 📂 postman/                              # API testing
+├── postman/                              # API testing
 │   └── Ecommerce_API_Collection.json        # Import into Postman
 │
-├── 📂 individual_contribution/              # Team member reports
+├── individual_contribution/              # Team member reports
 │
 └── README.md                               # This file
 ```
 
 ---
 
-## 🧪 Running Tests
+## Running Tests
 
 ```bash
 cd backend
@@ -553,16 +553,16 @@ cd backend
 ```
 
 Test coverage includes:
-- `AuthServiceTest` — registration, login, duplicate email
-- `ProductServiceTest` — CRUD, search, stock validation
-- `CartServiceTest` — add/update/remove, stock check
-- `OrderServiceTest` — checkout flow, stock deduction
-- `AuthControllerTest` — HTTP layer tests with MockMvc
-- `OrderFlowIntegrationTest` — end-to-end order lifecycle
+- `AuthServiceTest` - registration, login, duplicate email
+- `ProductServiceTest` - CRUD, search, stock validation
+- `CartServiceTest` - add/update/remove, stock check
+- `OrderServiceTest` - checkout flow, stock deduction
+- `AuthControllerTest` - HTTP layer tests with MockMvc
+- `OrderFlowIntegrationTest` - end-to-end order lifecycle
 
 ---
 
-## 🔮 Roadmap
+## Roadmap
 
 - [ ] Email verification on registration
 - [ ] Password reset via email OTP
@@ -576,31 +576,31 @@ Test coverage includes:
 
 ---
 
-## 👥 Team
+## Team
 
-**Team Name: Cold Blooded** | VIT Bhopal University
+**Team Name: Cold Blooded** | IIITB
 
 | Name | Roll Number | Contribution |
 |------|------------|-------------|
-| **Tanmay Dixit** | BT2024016 | Project Lead · Authentication · Spring Security · JWT implementation |
-| **Ayush Patel** | BT2024054 | Product module · Category management · Search & filtering |
-| **Aryan Malik** | BT2024006 | Cart system · Order management · Stock concurrency handling |
-| **Kabir Ahuja** | BT2024004 | Frontend UI/UX · Admin dashboard · CSS design system |
-| **Naman Jindal** | BT2024203 | Database schema design · SQL scripts · Data modeling |
-| **Sachin Singh Nain** | BT2024201 | Unit testing · Integration testing · API documentation |
+| **Tanmay Dixit** | BT2024016 | Project Lead - Authentication - Spring Security - JWT implementation |
+| **Ayush Patel** | BT2024054 | Product module - Category management - Search & filtering |
+| **Aryan Malik** | BT2024006 | Cart system - Order management - Stock concurrency handling |
+| **Kabir Ahuja** | BT2024004 | Frontend UI/UX - Admin dashboard - CSS design system |
+| **Naman Jindal** | BT2024203 | Database schema design - SQL scripts - Data modeling |
+| **Sachin Singh Nain** | BT2024201 | Unit testing - Integration testing - API documentation |
 
 ---
 
-## 📄 License
+## License
 
-This project is licensed under the **MIT License** — see the [LICENSE](LICENSE) file for details.
+This project is licensed under the **MIT License** - see the [LICENSE](LICENSE) file for details.
 
 ---
 
 <div align="center">
 
-Made with ❤️ by Team Cold Blooded · VIT Bhopal
+Made with code by Team Cold Blooded - IIITB
 
-⭐ **Star this repo if you found it useful!** ⭐
+**Star this repo if you found it useful!**
 
 </div>
